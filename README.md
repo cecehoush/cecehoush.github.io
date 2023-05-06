@@ -1,4 +1,6 @@
-# cecehoush.github.io
+theme: jekyll-theme-minimal
+title: Cece's Final CS1030 Project
+description: Bookmark this to keep an eye on my project updates!
 
 Cece Housh
 901015203
