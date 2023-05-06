@@ -1,8 +1,6 @@
 <h1> CS1030 Principles Final Project </h1>
+By Cece Housh
 
-Cece Housh
-<p>
-05/01/2023
 <p>
 <h3> <strong>Khan Academy Data Analysis Portion</strong> </h3> 
 <p>
