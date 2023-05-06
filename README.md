@@ -25,13 +25,13 @@ Cece Housh
 <p>
   I personally never used Khan Academy and since high school and I didn’t view it as helpful, but after this project, I have changed my mind. I found these to be really interesting but it was mainly because they were subjects I’m already familiar with. However, I believe that it would have been a significant (positive) factor in my success in my degree if I had used it prior. Throughout the exercises, I was able to get 100% on each of them, as well as the unit test. The main goal of taking the unit test is to make sure we, as students, are understanding the concepts and seeing how they all tie into each other. It sought a lot of critical thinking from the user taking the test, as they’re real-world questions that you have to think through, but it was especially great because it clarified why your answer (or the other options) was right/wrong.
 <p>
------------------------------------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------------
 <p>
   <strong>Step 1:</strong> 
 <p>
 Chosen data source: Kaggle
 <p>
-Chosen dataset topic: [Mental Health & Suicide Death] (https://www.kaggle.com/datasets/venkatkumar001/mental-health-suicide-death)
+Chosen dataset topic: Mental Health & Suicide Death
   <p>
   Mental Health & Suicide Death website: https://www.kaggle.com/datasets/venkatkumar001/mental-health-suicide-death
 <p>
