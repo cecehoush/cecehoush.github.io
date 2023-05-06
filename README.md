@@ -49,17 +49,27 @@ Chosen dataset topic: Mental Health & Suicide Death
   </ol>
 <p>
   <strong> Step 3:</strong> Use computer-based tools to analyze the data in the context of addressing your questions/hypotheses. *using Excel*
-Addressing Questions:
-Iran in 2015 with a 19.35% mental disorder prevalence. Vietnam with a 9.46% in 2011 (but had also been the lowest percentage from 1995 - 2019)
-Yes, there have been many percent fluctuations in self-harm-related deaths throughout the years in every country. Specifically, Andorra had one of the most significant percentage decreases being 2.4 in 1990 and 1.3 in 2019.
-Greenland in 1990 had the highest self-harm-related death percentage, at 11.8%. But they also had the highest self-harm-related death percentage throughout the entire 1990 - 2019 span (not necessarily in the year order though). On the other hand, Rwanda had the lowest self-harm-related death percentage in 1994 at 0.1%.
-In 2003 the country with the highest self-harm-related death percentage was: Palestine 
+  <p>
+  <em> Addressing Questions: </em>
+    <ol>
+<li> Iran in 2015 with a 19.35% mental disorder prevalence. Vietnam with a 9.46% in 2011 (but had also been the lowest percentage from 1995 - 2019) </li> 
+<li> Yes, there have been many percent fluctuations in self-harm-related deaths throughout the years in every country. Specifically, Andorra had one of the most significant percentage decreases being 2.4 in 1990 and 1.3 in 2019. </li>
+<li> Greenland in 1990 had the highest self-harm-related death percentage, at 11.8%. But they also had the highest self-harm-related death percentage throughout the entire 1990 - 2019 span (not necessarily in the year order though). On the other hand, Rwanda had the lowest self-harm-related death percentage in 1994 at 0.1%. </li>
+<li> In 2003 the country with the highest self-harm-related death percentage was: Palestine 
+  <p>
 Top 5: 
+    <p>
 Palestine at 19.02%
+<p>
 Australia at 18.96%
+<p>
 New Zealand at 18.9%
+<p>
 Portugal at 18.89%
+<p>
 Iran at 18.85%
+      </li>
+  </ol>
 <p>
 <strong> The process by which these problems were determined:</strong> Mental health and suicides are very serious topics and don’t seem to be getting much better. Looking through this data, it is important to try to see the patterns. Seeing if there is an increase/decrease within certain years can make it more precise to see what may be causing this. If we went further with it, we could use the year range that death rates were at their highest and then look up any significant events that may have happened in that time frame or other stats that could’ve been impactful (for example, if unemployment rates had risen at the same time as suicide rates, we would be able to make a connection). I decided to look for the years at which these rates were highest, and what countries they were highest in. If we look at the locations that have higher rates, it could make it more precise for what areas we should focus on when it comes to making a change. Overall, I simply tried thinking of problems that I was genuinely interested in and I personally would focus on if I had collected the data myself.
 <p>
