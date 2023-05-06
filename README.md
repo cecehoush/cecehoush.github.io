@@ -57,15 +57,15 @@ Chosen dataset topic: Mental Health & Suicide Death
   <p>
 Top 5: 
     <p>
-  Palestine at 19.02%
+  &emsp; Palestine at 19.02%
 <p>
-  Australia at 18.96%
+  &emsp; Australia at 18.96%
 <p>
-  New Zealand at 18.9%
+  &emsp; New Zealand at 18.9%
 <p>
-  Portugal at 18.89%
+  &emsp; Portugal at 18.89%
 <p>
-  Iran at 18.85%
+  &emsp; Iran at 18.85%
       </li>
   </ol>
 <p>
