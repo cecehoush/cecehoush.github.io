@@ -34,6 +34,8 @@ I personally never liked Khan Academy and since high school, I didn’t believe 
 Chosen data source: Kaggle
 <p>
 Chosen dataset topic: Mental Health & Suicide Death
+  <p>
+  Mental Health & Suicide Death website: https://www.kaggle.com/datasets/venkatkumar001/mental-health-suicide-death
 <p>
   <strong> Step 2:</strong> Write one or more questions or hypotheses that can be addressed using the data set you have selected.
 <p>
