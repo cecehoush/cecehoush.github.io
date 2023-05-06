@@ -9,7 +9,7 @@ Cece Housh
 
 <h1> CS1030 Principles Final Project </h1>
 <p>
-<h3> <strong> Khan Academy Data Analysis Portion </h3> </strong> 
+<h3> <strong>Khan Academy Data Analysis Portion</strong> </h3> 
 <p>
   <em> Data Tools </em>
 <p>
@@ -29,7 +29,7 @@ I personally never liked Khan Academy and since high school, I didn’t believe 
 <p>
 —--------------------------------—--------------------------------—--------------------------------—---------
 <p>
-  <strong> Step 1: </strong> 
+  <strong>Step 1:</strong> 
 <p>
 Chosen data source: Kaggle
 <p>
@@ -37,7 +37,7 @@ Chosen dataset topic: Mental Health & Suicide Death
   <p>
   Mental Health & Suicide Death website: https://www.kaggle.com/datasets/venkatkumar001/mental-health-suicide-death
 <p>
-  <strong> Step 2:</strong> Write one or more questions or hypotheses that can be addressed using the data set you have selected.
+  <strong>Step 2:</strong> Write one or more questions or hypotheses that can be addressed using the data set you have selected.
 <p>
   <em> Questions: </em>
   <p>
@@ -48,7 +48,7 @@ Chosen dataset topic: Mental Health & Suicide Death
   <li> In 2003 what country had the highest self-harm-related death percentage? Top 5? </li>
   </ol>
 <p>
-  <strong> Step 3:</strong> Use computer-based tools to analyze the data in the context of addressing your questions/hypotheses. *using Excel*
+  <strong>Step 3:</strong> Use computer-based tools to analyze the data in the context of addressing your questions/hypotheses. *using Excel*
   <p>
   <em> Addressing Questions: </em>
     <ol>
@@ -71,10 +71,10 @@ Iran at 18.85%
       </li>
   </ol>
 <p>
-<strong> The process by which these problems were determined:</strong> Mental health and suicides are very serious topics and don’t seem to be getting much better. Looking through this data, it is important to try to see the patterns. Seeing if there is an increase/decrease within certain years can make it more precise to see what may be causing this. If we went further with it, we could use the year range that death rates were at their highest and then look up any significant events that may have happened in that time frame or other stats that could’ve been impactful (for example, if unemployment rates had risen at the same time as suicide rates, we would be able to make a connection). I decided to look for the years at which these rates were highest, and what countries they were highest in. If we look at the locations that have higher rates, it could make it more precise for what areas we should focus on when it comes to making a change. Overall, I simply tried thinking of problems that I was genuinely interested in and I personally would focus on if I had collected the data myself.
+<strong>The process by which these problems were determined:</strong> Mental health and suicides are very serious topics and don’t seem to be getting much better. Looking through this data, it is important to try to see the patterns. Seeing if there is an increase/decrease within certain years can make it more precise to see what may be causing this. If we went further with it, we could use the year range that death rates were at their highest and then look up any significant events that may have happened in that time frame or other stats that could’ve been impactful (for example, if unemployment rates had risen at the same time as suicide rates, we would be able to make a connection). I decided to look for the years at which these rates were highest, and what countries they were highest in. If we look at the locations that have higher rates, it could make it more precise for what areas we should focus on when it comes to making a change. Overall, I simply tried thinking of problems that I was genuinely interested in and I personally would focus on if I had collected the data myself.
 <p>
-  <strong> The process of data obtained:</strong> I started by going through Kaggle to find an interesting dataset. I found a few but many of them in my topic range didn’t have enough data. I finally came across Mental Health & Suicide Death and downloaded the datasets files. I then went to Excel Spreadsheets, went to the data tab, pressed “get data” and uploaded the files there since it was originally in csv, and it made it more organized. I will go more into detail in the next paragraph where I explain how I used tools to answer my questions. 
+  <strong>The process of data obtained:</strong> I started by going through Kaggle to find an interesting dataset. I found a few but many of them in my topic range didn’t have enough data. I finally came across Mental Health & Suicide Death and downloaded the datasets files. I then went to Excel Spreadsheets, went to the data tab, pressed “get data” and uploaded the files there since it was originally in csv, and it made it more organized. I will go more into detail in the next paragraph where I explain how I used tools to answer my questions. 
 <p>
-<strong> The process of the analysis conducted:</strong> For most of this information I went through Excel Spreadsheets and fixed the filtering based on what information I was looking for. For example, I was looking for what country had the highest mental disorder prevalence and when. I had two spreadsheets, one for Mental Disorder Prevalence and one for Self-Harm-Related Deaths. I went to the Mental Disorder Prevalence spreadsheet and set the Prevalence to sort by descending, making the prevalence percentage go from highest to lowest. I then looked at the highest percentage and determined what country that percentage was tied to and what year it happened in. For other things though, such as question 2, it was a little more difficult. I had to make a graph from the given data and see the slopes/lines of each country and determine which one had the most exponential (if I was looking for the highest increase). For this specific question I was just looking for one of the top significant differences in Self-Harm-Related Deaths, and since it wasn't specified, I picked a country that I personally didn't know much about, but was surprised to see such a difference (and It was a decrease, so it’s a little on the positive side).
+<strong>The process of the analysis conducted:</strong> For most of this information I went through Excel Spreadsheets and fixed the filtering based on what information I was looking for. For example, I was looking for what country had the highest mental disorder prevalence and when. I had two spreadsheets, one for Mental Disorder Prevalence and one for Self-Harm-Related Deaths. I went to the Mental Disorder Prevalence spreadsheet and set the Prevalence to sort by descending, making the prevalence percentage go from highest to lowest. I then looked at the highest percentage and determined what country that percentage was tied to and what year it happened in. For other things though, such as question 2, it was a little more difficult. I had to make a graph from the given data and see the slopes/lines of each country and determine which one had the most exponential (if I was looking for the highest increase). For this specific question I was just looking for one of the top significant differences in Self-Harm-Related Deaths, and since it wasn't specified, I picked a country that I personally didn't know much about, but was surprised to see such a difference (and It was a decrease, so it’s a little on the positive side).
 <p>
-<strong> The results of the analyses:</strong> The conclusion of these results was that Greenland seems to have the highest self-harm-related death percentage throughout the 1990-2019 span, while Rwanda had the lowest self-harm-related death percentage (but just in 1994). On the side of mental disorder prevalence, Iran had the highest percentage in 2015 while Vietnam had kept the lowest from 1995-2019.
+<strong>The results of the analyses:</strong> The conclusion of these results was that Greenland seems to have the highest self-harm-related death percentage throughout the 1990-2019 span, while Rwanda had the lowest self-harm-related death percentage (but just in 1994). On the side of mental disorder prevalence, Iran had the highest percentage in 2015 while Vietnam had kept the lowest from 1995-2019.
