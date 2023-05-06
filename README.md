@@ -9,9 +9,9 @@ Cece Housh
 
 #_Header 1CS Principles Final Project
 <p>
-**bold** Khan Academy Data Analysis Portion
+__bold__ Khan Academy Data Analysis Portion
 <p>
-*italics* Data Tools
+_italics_ Data Tools
 <p>
 This module was a great introduction to the tools/technologies utilized in data analysis. Everybody benefits greatly from knowing how to utilize spreadsheets, SQL, and several helpful functions (such as Count, Average, etc.), which are excellent starting points for grasping this topic. It showed the significance of several subtopics, such as data types, data structures, and data cleaning methods. Surprisingly enough, even though I am very far along in my degree I still didn't know half of this material. Since I hadn’t heard of this information (at least this detailed), I was genuinely intrigued as I continued reading. I am confident in my ability to discern patterns in data statistics and their particularity, so I did fine throughout the exercises, but I have never been exposed to the necessary abilities. Because of that, I feel like this assignment would’ve helped me feel more confident throughout my Software Development class (even if it wasn’t needed for the course material, it would’ve helped me through the mock interviews). For the exercises, I didn’t personally struggle with them, as I’ve already had classes that discussed CSV files, made me focus on detecting patterns within data, and had questions similar to the statistics ones given. 
 <p>
