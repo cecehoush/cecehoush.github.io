@@ -39,12 +39,14 @@ Chosen dataset topic: Mental Health & Suicide Death
 <p>
   <strong> Step 2:</strong> Write one or more questions or hypotheses that can be addressed using the data set you have selected.
 <p>
-Questions:
-<p>
-From 1990 - 2019, what country has had the most elevated mental disorder prevalence? What year was it? What about the lowest?
-From 1990 - 2019, has the self-harm death percentage increased or decreased at all throughout these countries? (Can make more specific to a year or country) Example of a significant increase/decrease?
-What year from 1990 - 2019 had the highest self-harm-related death percentage? What country was it in? (Could make it more specific by asking for a certain countries year) What about the lowest self-harm-related death percentage?
-In 2003 what country had the highest self-harm-related death percentage? Top 5?
+  <em> Questions: </em>
+  <p>
+<ol>
+<li> From 1990 - 2019, what country has had the most elevated mental disorder prevalence? What year was it? What about the lowest? </li>
+<li> From 1990 - 2019, has the self-harm death percentage increased or decreased at all throughout these countries? (Can make more specific to a year or country) Example of a significant increase/decrease? </li>
+<li> What year from 1990 - 2019 had the highest self-harm-related death percentage? What country was it in? (Could make it more specific by asking for a certain countries year) What about the lowest self-harm-related death percentage? </li>
+  <li> In 2003 what country had the highest self-harm-related death percentage? Top 5? </li>
+  </ol>
 <p>
   <strong> Step 3:</strong> Use computer-based tools to analyze the data in the context of addressing your questions/hypotheses. *using Excel*
 Addressing Questions:
