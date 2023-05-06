@@ -7,7 +7,7 @@ Cece Housh
 05/01/2023
 <p>
 
-<h1> CS1030 Principles Final Project </h1>
+<h6> CS1030 Principles Final Project </h6>
 <p>
   <h2> <strong> Khan Academy Data Analysis Portion </h2> </strong> 
 <p>
