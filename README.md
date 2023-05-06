@@ -7,23 +7,23 @@ Cece Housh
 05/01/2023
 <p>
 
-CS Principles Final Project
+#_Header 1CS Principles Final Project
 <p>
-Khan Academy Data Analysis Portion
+**bold** Khan Academy Data Analysis Portion
 <p>
-Data Tools
+*italics* Data Tools
 <p>
 This module was a great introduction to the tools/technologies utilized in data analysis. Everybody benefits greatly from knowing how to utilize spreadsheets, SQL, and several helpful functions (such as Count, Average, etc.), which are excellent starting points for grasping this topic. It showed the significance of several subtopics, such as data types, data structures, and data cleaning methods. Surprisingly enough, even though I am very far along in my degree I still didn't know half of this material. Since I hadn’t heard of this information (at least this detailed), I was genuinely intrigued as I continued reading. I am confident in my ability to discern patterns in data statistics and their particularity, so I did fine throughout the exercises, but I have never been exposed to the necessary abilities. Because of that, I feel like this assignment would’ve helped me feel more confident throughout my Software Development class (even if it wasn’t needed for the course material, it would’ve helped me through the mock interviews). For the exercises, I didn’t personally struggle with them, as I’ve already had classes that discussed CSV files, made me focus on detecting patterns within data, and had questions similar to the statistics ones given. 
 <p>
-Big Data
+*italics* Big Data
 <p>
 This module gave a good understanding of the special difficulties and opportunities that big datasets provide. It was great for learning how to use big data tools and technology, as well as how to examine massive datasets and gain insights using machine learning methods. Data privacy and security issues, such as how medical data is maintained, data centers, personally identifiable information (and the best ways to secure it), and the storage and processing/time behind datasets were some additional crucial topics (alongside the difficulties that datasets might present). It offered helpful guidance for utilizing big data in actual contexts and helped me get a better understanding of the methods/procedures needed to efficiently work with complex datasets. The exercises for this one were considerably easy to understand, but I believe it more so because of them being real-life scenarios that we can picture ourselves having to do in our fields of study. Again, this module also felt practical for the Software Development class, especially since as we go farther up in the CS courses, everything gets bigger and more complex in an overall sense. 
 <p>
-Machine Learning Algorithms
+*italics* Machine Learning Algorithms
 <p>
 The ethical and societal repercussions of data analysis and machine learning were covered in this module, which can be a crucially important part of the curriculum. I appreciated the explanation of Machine Learning in the beginning since many people dont consider the fact that it's an experience-related self-improvement algorithm. People typically just think of it as something that a programmer is doing behind the scenes. Later, it demonstrated precisely how bias can be incorporated into machine learning algorithms and how these biases can have negative effects on people and society. Algorithmic fairness, data ethics, and the societal duty of data scientists were all covered. This module specifically helped in my comprehensive grasp of the difficult moral dilemmas raised by data analysis and machine learning. This one actually reminded me of the Hello World book when Hanah Fry talked about bias in algorithms and historical bias in data. The exercises for this one were pretty similar to both of the others as they tied into previous courses I've taken that took data or statistics and came up with a logical idea or reasoning for explaining the data.
 <p>
-Unit Tests
+*italics* Unit Tests
 <p>
 I personally never liked Khan Academy and since high school, I didn’t believe it would be helpful, but after this project, I have changed my mind. I found these to be really interesting but it was mainly because they were subjects I’m already familiar with. However, I believe that it would have been a significant (positive) factor in my success in my degree if I had used it prior. Throughout the exercises, I was able to get 100% on each of them, as well as the unit test. The main goal of taking the unit test is to make sure we, as students, are understanding the concepts and seeing how they all tie into each other. It sought a lot of critical thinking from the user taking the test, as they’re real-world questions that you have to think through, but it was especially great because it clarified why your answer (or the other options) was right/wrong.
 <p>
