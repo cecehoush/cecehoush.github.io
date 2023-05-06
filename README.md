@@ -9,7 +9,7 @@ Cece Housh
 
 # CS1030 Principles Final Project <h1>
 <p>
-  <h3> <strong> Khan Academy Data Analysis Portion </h3> </strong> 
+## <strong> Khan Academy Data Analysis Portion <h3> </strong> 
 <p>
   <em> Data Tools </em>
 <p>
