@@ -32,7 +32,7 @@ Chosen dataset topic: Mental Health & Suicide Death
 <p>
   <strong>Step 2:</strong> Write one or more questions or hypotheses that can be addressed using the data set you have selected.
 <p>
-  <em><ins> Questions: </em></ins>
+  <em><ins> Questions: </ins>
   <p>
 <ol>
 <li> From 1990 - 2019, what country has had the most elevated mental disorder prevalence? What year was it? What about the lowest? </li>
