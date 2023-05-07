@@ -61,8 +61,6 @@ Top 5:
   &emsp; Portugal at 18.89%
 <p>
   &emsp; Iran at 18.85%
-      </li>
-  </ol>
 <p>
 <strong>The process by which these problems were determined:</strong> Mental health and suicides are very serious topics and don’t seem to be getting much better. Looking through this data, it is important to try to see the patterns. Seeing if there is an increase/decrease within certain years can make it more precise to see what may be causing this. If we went further with it, we could use the year range that death rates were at their highest and then look up any significant events that may have happened in that time frame or other stats that could’ve been impactful (for example, if unemployment rates had risen at the same time as suicide rates, we would be able to make a connection). I decided to look for the years at which these rates were highest, and what countries they were highest in. If we look at the locations that have higher rates, it could make it more precise for what areas we should focus on when it comes to making a change. Overall, I simply tried thinking of problems that I was genuinely interested in and I personally would focus on if I had collected the data myself.
 <p>
