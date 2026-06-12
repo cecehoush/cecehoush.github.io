@@ -1,0 +1,22 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #070A12;
+  --surface: #0D1525;
+  --surface2: #111C2E;
+  --blue: #6AAEE0;
+  --lav: #B090E0;
+  --orange: #FF9D4D;
+  --text: #E8F0FC;
+  --muted: rgba(232, 240, 252, 0.42);
+  --rule: rgba(106, 174, 224, 0.14);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+}

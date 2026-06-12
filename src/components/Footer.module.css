@@ -1,0 +1,26 @@
+.footer {
+  padding: 1.2rem 2.5rem;
+  border-top: 0.5px solid rgba(106, 174, 224, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.left {
+  font-size: 0.69rem;
+  color: rgba(232, 240, 252, 0.2);
+  letter-spacing: 0.08em;
+}
+.links {
+  display: flex;
+  gap: 1.5rem;
+  font-size: 0.69rem;
+  color: rgba(232, 240, 252, 0.3);
+}
+.links a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.2s;
+}
+.links a:hover {
+  color: var(--blue);
+}

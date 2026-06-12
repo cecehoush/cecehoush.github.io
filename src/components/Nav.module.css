@@ -1,0 +1,92 @@
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2.5rem;
+  border-bottom: 0.5px solid var(--rule);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(7, 10, 18, 0.85);
+  backdrop-filter: blur(12px);
+}
+.logo {
+  font-family: 'Syne', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--blue);
+  animation: blink 2.2s ease-in-out infinite;
+  flex-shrink: 0;
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.3; transform: scale(0.7); }
+}
+.right {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+.links {
+  display: flex;
+  gap: 1.8rem;
+  font-size: 0.73rem;
+  color: rgba(232, 240, 252, 0.38);
+  letter-spacing: 0.08em;
+}
+.links a {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.links a:hover { color: var(--blue); }
+.divider {
+  width: 0.5px;
+  height: 18px;
+  background: rgba(106, 174, 224, 0.2);
+}
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.btn {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.7rem;
+  padding: 0.38rem 0.85rem;
+  border: 0.5px solid rgba(106, 174, 224, 0.28);
+  border-radius: 6px;
+  color: rgba(232, 240, 252, 0.55);
+  cursor: pointer;
+  transition: all 0.2s;
+  letter-spacing: 0.06em;
+  background: transparent;
+  font-family: 'DM Sans', sans-serif;
+  text-decoration: none;
+}
+.btn:hover {
+  border-color: var(--blue);
+  color: var(--blue);
+  background: rgba(106, 174, 224, 0.07);
+}
+.btn.lav {
+  border-color: rgba(176, 144, 224, 0.28);
+  color: rgba(176, 144, 224, 0.55);
+}
+.btn.lav:hover {
+  border-color: var(--lav);
+  color: var(--lav);
+  background: rgba(176, 144, 224, 0.07);
+}
