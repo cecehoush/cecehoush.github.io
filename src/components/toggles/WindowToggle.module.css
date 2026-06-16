@@ -1,0 +1,45 @@
+.btn {
+  width: 66px;
+  height: 66px;
+  position: relative;
+  padding: 0;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.btn:hover .window {
+  transform: scale(1.05);
+}
+.btn:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
+  border-radius: 12px;
+}
+.window {
+  display: block;
+  transition: transform 0.2s ease;
+}
+.bounce {
+  animation: winBounce 0.42s cubic-bezier(0.16, 1, 0.3, 1);
+}
+@keyframes winBounce {
+  0% { transform: scale(1); }
+  35% { transform: scale(1.12) translateY(-2px); }
+  70% { transform: scale(0.96); }
+  100% { transform: scale(1); }
+}
+.sky, .sill {
+  transition: fill 0.3s ease;
+}
+.emoji {
+  position: absolute;
+  top: 8px;
+  right: 9px;
+  font-size: 11px;
+  line-height: 1;
+  pointer-events: none;
+}

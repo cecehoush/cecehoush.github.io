@@ -29,13 +29,16 @@
   white-space: nowrap;
 }
 .tag {
+  font-family: inherit;
   font-size: 0.68rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: rgba(232, 240, 252, 0.28);
+  color: var(--muted);
   font-weight: 400;
   cursor: pointer;
   padding: 0.2rem 0;
+  background: none;
+  border: none;
   border-bottom: 1px solid transparent;
   transition: all 0.2s;
   user-select: none;
@@ -70,6 +73,19 @@
   opacity: 0.32;
   flex-shrink: 0;
 }
+[data-theme="light"] .sep {
+  opacity: 0.7;
+}
+
+/* Light-mode contrast: marquee tag accents need darker variants to pass
+   WCAG AA on the light bg. Scoped to .tag so the Figma drawer's (dark)
+   .piType labels are unaffected. */
+[data-theme="light"] .tag.fig {
+  color: #A84A00;
+}
+[data-theme="light"] .tag.lav {
+  color: #4A2E8A;
+}
 
 /* ── SKILL DRAWER ── */
 .drawer {
@@ -83,7 +99,7 @@
   opacity: 1;
 }
 .drawerInner {
-  background: #0D1525;
+  background: var(--surface);
   border-top: 2px solid var(--blue);
   border-bottom: 2px solid rgba(106, 174, 224, 0.2);
   padding: 1.5rem 2.5rem 1.8rem;
@@ -122,7 +138,7 @@
   font-size: 0.62rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgba(232, 240, 252, 0.32);
+  color: color-mix(in srgb, var(--text) 32%, transparent);
 }
 .drawerSkillName {
   font-family: 'Syne', sans-serif;
@@ -134,21 +150,21 @@
 }
 .drawerClose {
   font-size: 0.68rem;
-  color: rgba(232, 240, 252, 0.28);
+  color: color-mix(in srgb, var(--text) 28%, transparent);
   cursor: pointer;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  background: rgba(255, 255, 255, 0.04);
-  border: 0.5px solid rgba(255, 255, 255, 0.1);
+  background: color-mix(in srgb, var(--text) 5%, transparent);
+  border: 0.5px solid color-mix(in srgb, var(--text) 12%, transparent);
   border-radius: 5px;
   font-family: 'DM Sans', sans-serif;
   padding: 0.3rem 0.75rem;
   transition: all 0.2s;
 }
 .drawerClose:hover {
-  color: #fff;
-  background: rgba(255, 255, 255, 0.09);
-  border-color: rgba(255, 255, 255, 0.2);
+  color: var(--heading);
+  background: color-mix(in srgb, var(--text) 9%, transparent);
+  border-color: color-mix(in srgb, var(--text) 20%, transparent);
 }
 .projList {
   display: grid;
@@ -162,12 +178,17 @@
 }
 .empty {
   font-size: 0.82rem;
-  color: rgba(232, 240, 252, 0.28);
+  color: color-mix(in srgb, var(--text) 28%, transparent);
   font-style: italic;
 }
 .projItem {
+  font-family: inherit;
+  text-align: left;
+  width: 100%;
+  color: inherit;
+  display: block;
   padding: 1.1rem 1.15rem;
-  background: #111C2E;
+  background: var(--surface2);
   border: 1px solid rgba(106, 174, 224, 0.2);
   border-radius: 11px;
   cursor: pointer;
@@ -176,16 +197,16 @@
   overflow: hidden;
 }
 .projItem:hover {
-  background: #152238;
+  background: color-mix(in srgb, var(--blue) 12%, var(--surface2));
   border-color: var(--blue);
   transform: translateY(-3px);
 }
 .projItem.lavCard {
-  background: #16112A;
+  background: color-mix(in srgb, var(--lav) 14%, var(--surface2));
   border-color: rgba(176, 144, 224, 0.22);
 }
 .projItem.lavCard:hover {
-  background: #1C1535;
+  background: color-mix(in srgb, var(--lav) 22%, var(--surface2));
   border-color: var(--lav);
 }
 .projItem.figCard {
@@ -224,7 +245,7 @@
   font-family: 'Syne', sans-serif;
   font-size: 0.92rem;
   font-weight: 700;
-  color: #fff;
+  color: var(--heading);
   margin-bottom: 0.2rem;
   line-height: 1.2;
 }
@@ -240,9 +261,31 @@
 .piType.fig { color: var(--orange); }
 .piDesc {
   font-size: 0.72rem;
-  color: rgba(232, 240, 252, 0.42);
+  color: color-mix(in srgb, var(--text) 42%, transparent);
   line-height: 1.45;
   font-weight: 300;
+}
+
+/* Figma (warm) drawer + cards stay dark in both themes, so their text
+   is forced light regardless of the active theme. */
+.drawerInner.figmaMode .drawerLabel {
+  color: rgba(232, 240, 252, 0.32);
+}
+.drawerInner.figmaMode .drawerClose {
+  color: rgba(232, 240, 252, 0.28);
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+.drawerInner.figmaMode .drawerClose:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.09);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+.projItem.figCard .piTitle {
+  color: #fff;
+}
+.projItem.figCard .piDesc {
+  color: rgba(232, 240, 252, 0.42);
 }
 .piFigmaHint {
   display: flex;

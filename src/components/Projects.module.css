@@ -5,7 +5,7 @@
   font-size: 0.66rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: rgba(106, 174, 224, 0.52);
+  color: var(--muted);
   margin-bottom: 1.5rem;
   display: flex;
   align-items: center;
@@ -15,7 +15,7 @@
   content: '';
   flex: 1;
   height: 0.5px;
-  background: rgba(106, 174, 224, 0.1);
+  background: var(--rule);
 }
 .cardGrid {
   display: grid;
@@ -27,8 +27,8 @@
 }
 .card {
   padding: 1.6rem;
-  background: rgba(255, 255, 255, 0.025);
-  border: 0.5px solid rgba(106, 174, 224, 0.15);
+  background: var(--card-bg);
+  border: 0.5px solid var(--card-border);
   border-radius: 14px;
   cursor: pointer;
   position: relative;
@@ -62,7 +62,7 @@
   font-family: 'Syne', sans-serif;
   font-size: 1.06rem;
   font-weight: 700;
-  color: #fff;
+  color: var(--heading);
   margin-bottom: 0.26rem;
   line-height: 1.2;
 }
@@ -76,7 +76,7 @@
 }
 .cardDesc {
   font-size: 0.75rem;
-  color: rgba(232, 240, 252, 0.42);
+  color: color-mix(in srgb, var(--text) 42%, transparent);
   line-height: 1.55;
   font-weight: 300;
 }
@@ -94,6 +94,13 @@
   transform: translate(3px, -3px);
 }
 
+/* Light-mode card text: darker variants for WCAG-AA contrast on the
+   light --card-bg. (Scheme D's dark cards keep their own, more-specific
+   [data-scheme="d"] overrides below.) */
+[data-theme="light"] .cardNum { color: #4A2E8A; }
+[data-theme="light"] .cardType { color: #0F3D7A; }
+[data-theme="light"] .cardDesc { color: rgba(13, 26, 46, 0.72); }
+
 /* ── FADE IN ── */
 .fadeIn {
   opacity: 0;
@@ -103,4 +110,18 @@
 .fadeIn.vis {
   opacity: 1;
   transform: none;
+}
+
+/* ── SCHEME D (Hybrid Dark Cards) ──
+   Project cards keep a dark surface in light mode (via --card-bg: #141E32),
+   so their text is forced light. Driven by data-scheme="d" on <html>, which
+   ThemeContext sets from LIGHT_SCHEME. */
+[data-theme="light"][data-scheme="d"] .card .cardTitle {
+  color: #E8F0FC;
+}
+[data-theme="light"][data-scheme="d"] .card .cardDesc {
+  color: rgba(232, 240, 252, 0.42);
+}
+[data-theme="light"][data-scheme="d"] .card .cardNum {
+  color: rgba(176, 144, 224, 0.58);
 }

@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import styles from './Hero.module.css';
+import { useTheme } from '../context/ThemeContext.jsx';
 
 const pCols = ['#6AAEE0', '#B090E0', '#9ACAE8', '#D0C0F0', 'rgba(255,255,255,0.82)'];
 const finalWord = 'people';
@@ -9,6 +10,7 @@ export default function Hero() {
   const canvasRef = useRef(null);
   const heroRef = useRef(null);
   const [word, setWord] = useState(finalWord);
+  const { isDark } = useTheme();
 
   // ── CANVAS PARTICLES + ORB RINGS ──
   useEffect(() => {
@@ -16,6 +18,18 @@ export default function Hero() {
     const heroEl = heroRef.current;
     if (!canvas || !heroEl) return;
     const ctx = canvas.getContext('2d');
+
+    // In light mode, pull stroke colors from the active scheme's CSS vars so the
+    // canvas follows whichever LIGHT_SCHEME block is uncommented. Dark mode keeps
+    // its original hardcoded colors.
+    const cs = getComputedStyle(document.documentElement);
+    const lightPalette = [
+      cs.getPropertyValue('--bubble-stroke-1').trim(),
+      cs.getPropertyValue('--bubble-stroke-2').trim(),
+    ];
+    const orbStrokeLight = cs.getPropertyValue('--orb-stroke').trim();
+    const connectorLight = cs.getPropertyValue('--connector').trim();
+    const palette = isDark ? pCols : lightPalette;
 
     let particles = [];
     let mx = -999, my = -999, gt = 0;
@@ -32,9 +46,13 @@ export default function Hero() {
         return {
           x: Math.random() * canvas.width, y: Math.random() * canvas.height,
           vx: (Math.random() - 0.5) * 0.28, vy: (Math.random() - 0.5) * 0.28,
-          r: big ? 5 + Math.random() * 13 : 1.5 + Math.random() * 3,
-          c: pCols[Math.floor(Math.random() * pCols.length)],
-          a: big ? 0.15 + Math.random() * 0.32 : 0.4 + Math.random() * 0.55,
+          // PARTICLE SIZE — adjust first number (min radius) and second (range) to taste
+          // big bubbles: currently 8–24px | small dots: currently 2.5–6.5px
+          r: big ? 8 + Math.random() * 16 : 2.5 + Math.random() * 4,
+          c: palette[Math.floor(Math.random() * palette.length)],
+          a: big
+            ? (isDark ? 0.15 + Math.random() * 0.32 : 0.55 + Math.random() * 0.35)
+            : (isDark ? 0.4 + Math.random() * 0.55 : 0.65 + Math.random() * 0.35),
           lw: 0.6 + Math.random() * 1.2, bubble: big,
         };
       });
@@ -72,10 +90,11 @@ export default function Hero() {
         const pulse = Math.sin(gt * 0.65 + i * 1.6) * 0.1 + 1;
         const ox = o.x * canvas.width + Math.sin(gt * 0.38 + i) * o.d;
         const oy = o.y * canvas.height + Math.cos(gt * 0.3 + i) * o.d;
+        const orbColor = isDark ? o.c : orbStrokeLight;
         ctx.beginPath(); ctx.arc(ox, oy, o.r * pulse, 0, Math.PI * 2);
-        ctx.strokeStyle = o.c; ctx.lineWidth = 1.5; ctx.globalAlpha = 1; ctx.stroke();
+        ctx.strokeStyle = orbColor; ctx.lineWidth = 1.5; ctx.globalAlpha = 1; ctx.stroke();
         ctx.beginPath(); ctx.arc(ox, oy, o.r * pulse * 0.6, 0, Math.PI * 2);
-        ctx.strokeStyle = o.c; ctx.lineWidth = 0.5; ctx.globalAlpha = 0.36; ctx.stroke();
+        ctx.strokeStyle = orbColor; ctx.lineWidth = 0.5; ctx.globalAlpha = 0.36; ctx.stroke();
         ctx.globalAlpha = 1;
       });
       particles.forEach((p, i) => {
@@ -86,18 +105,22 @@ export default function Hero() {
         if (p.y < -20) p.y = canvas.height + 20; if (p.y > canvas.height + 20) p.y = -20;
         if (p.bubble) {
           ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-          ctx.strokeStyle = p.c; ctx.globalAlpha = p.a; ctx.lineWidth = p.lw; ctx.stroke();
-          ctx.beginPath(); ctx.arc(p.x - p.r * 0.3, p.y - p.r * 0.3, p.r * 0.17, 0, Math.PI * 2);
-          ctx.fillStyle = 'rgba(255,255,255,0.65)'; ctx.globalAlpha = p.a * 0.52; ctx.fill();
+          ctx.strokeStyle = p.c; ctx.globalAlpha = isDark ? p.a : 1; ctx.lineWidth = p.lw; ctx.stroke();
+          // White highlight reads as a soap-bubble glint on the dark hero, but is
+          // invisible/washed on a pale light-mode background — skip it in light mode.
+          if (isDark) {
+            ctx.beginPath(); ctx.arc(p.x - p.r * 0.3, p.y - p.r * 0.3, p.r * 0.17, 0, Math.PI * 2);
+            ctx.fillStyle = 'rgba(255,255,255,0.65)'; ctx.globalAlpha = p.a * 0.52; ctx.fill();
+          }
           const spd = Math.sqrt(p.vx * p.vx + p.vy * p.vy);
           if (spd > 0.45) { ctx.beginPath(); ctx.arc(p.x, p.y, p.r * 1.38, 0, Math.PI * 2); ctx.strokeStyle = p.c; ctx.globalAlpha = p.a * (spd / 2) * 0.22; ctx.lineWidth = 0.4; ctx.stroke(); }
         } else {
           ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-          ctx.fillStyle = p.c; ctx.globalAlpha = p.a; ctx.fill();
+          ctx.fillStyle = p.c; ctx.globalAlpha = isDark ? p.a : 1; ctx.fill();
         }
         for (let j = i + 1; j < particles.length; j++) {
           const q = particles[j], ex = p.x - q.x, ey = p.y - q.y, ed = Math.sqrt(ex * ex + ey * ey);
-          if (ed < 95) { ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(q.x, q.y); ctx.strokeStyle = '#6AAEE0'; ctx.globalAlpha = (1 - ed / 95) * 0.12; ctx.lineWidth = 0.4; ctx.stroke(); }
+          if (ed < 95) { ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(q.x, q.y); ctx.strokeStyle = isDark ? '#6AAEE0' : connectorLight; ctx.globalAlpha = isDark ? (1 - ed / 95) * 0.12 : 1; ctx.lineWidth = 0.4; ctx.stroke(); }
         }
         ctx.globalAlpha = 1;
       });
@@ -112,7 +135,7 @@ export default function Hero() {
       heroEl.removeEventListener('mousemove', onMouseMove);
       heroEl.removeEventListener('mouseleave', onMouseLeave);
     };
-  }, []);
+  }, [isDark]);
 
   // ── TEXT SCRAMBLE ──
   useEffect(() => {

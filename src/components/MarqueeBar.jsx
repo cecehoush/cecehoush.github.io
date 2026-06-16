@@ -59,7 +59,8 @@ export default function MarqueeBar({ onOpenFigma }) {
         <div className={styles.track}>
           {[...skills, ...skills].map((sk, i) => (
             <span className={styles.item} key={i}>
-              <span
+              <button
+                type="button"
                 className={[
                   styles.tag,
                   sk.lav ? styles.lav : '',
@@ -69,7 +70,7 @@ export default function MarqueeBar({ onOpenFigma }) {
                 onClick={() => handleSkillClick(sk)}
               >
                 {sk.label}
-              </span>
+              </button>
               <span className={styles.sep}></span>
             </span>
           ))}
@@ -91,37 +92,47 @@ export default function MarqueeBar({ onOpenFigma }) {
             {drawerData && drawerData.matched.length === 0 && (
               <div className={styles.empty}>No projects tagged yet.</div>
             )}
-            {drawerData && drawerData.matched.map((p) => (
-              <div
-                key={p.id}
-                className={[
-                  styles.projItem,
-                  (p.lav && !isFig) ? styles.lavCard : '',
-                  isFig ? styles.figCard : '',
-                ].filter(Boolean).join(' ')}
-                onClick={isFig ? () => onOpenFigma(p) : undefined}
-              >
-                <div className={styles.projItemBar}></div>
-                <div className={styles.piNum}>{p.num}</div>
-                <div className={styles.piTitle}>{p.title}</div>
-                <div
-                  className={[
-                    styles.piType,
-                    (p.lav && !isFig) ? styles.lav : '',
-                    isFig ? styles.fig : '',
-                  ].filter(Boolean).join(' ')}
-                >
-                  {p.type}
-                </div>
-                <div className={styles.piDesc}>{p.desc}</div>
-                {isFig && (
-                  <div className={styles.piFigmaHint}>
-                    {figmaPinkSvg} View screens
+            {drawerData && drawerData.matched.map((p) => {
+              const className = [
+                styles.projItem,
+                (p.lav && !isFig) ? styles.lavCard : '',
+                isFig ? styles.figCard : '',
+              ].filter(Boolean).join(' ');
+              const inner = (
+                <>
+                  <div className={styles.projItemBar}></div>
+                  <div className={styles.piNum}>{p.num}</div>
+                  <div className={styles.piTitle}>{p.title}</div>
+                  <div
+                    className={[
+                      styles.piType,
+                      (p.lav && !isFig) ? styles.lav : '',
+                      isFig ? styles.fig : '',
+                    ].filter(Boolean).join(' ')}
+                  >
+                    {p.type}
                   </div>
-                )}
-                <div className={styles.piArrow}>↗</div>
-              </div>
-            ))}
+                  <div className={styles.piDesc}>{p.desc}</div>
+                  {isFig && (
+                    <div className={styles.piFigmaHint}>
+                      {figmaPinkSvg} View screens
+                    </div>
+                  )}
+                  <div className={styles.piArrow}>↗</div>
+                </>
+              );
+              // Figma projects open the modal (interactive → button); others are
+              // static info cards and stay as non-interactive divs.
+              return isFig ? (
+                <button type="button" key={p.id} className={className} onClick={() => onOpenFigma(p)}>
+                  {inner}
+                </button>
+              ) : (
+                <div key={p.id} className={className}>
+                  {inner}
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>

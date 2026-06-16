@@ -31,6 +31,9 @@
   opacity: 0.78;
   animation: fadeup 0.9s ease 0.2s both;
 }
+[data-theme="light"] .eyebrow {
+  color: #1A5090;
+}
 @keyframes fadeup {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: none; }
@@ -46,7 +49,7 @@
   font-family: 'Syne', sans-serif;
   font-size: 1.05rem;
   font-weight: 400;
-  color: rgba(255, 255, 255, 0.25);
+  color: var(--hero-pre);
   letter-spacing: 0.24em;
   text-transform: uppercase;
 }
@@ -58,7 +61,7 @@
   letter-spacing: -0.03em;
 }
 .outlined {
-  -webkit-text-stroke: 2px rgba(255, 255, 255, 0.88);
+  -webkit-text-stroke: 2px var(--heading-stroke);
   color: transparent;
 }
 .heroDot {
@@ -76,7 +79,7 @@
   font-size: 0.61rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: rgba(232, 240, 252, 0.18);
+  color: color-mix(in srgb, var(--text) 18%, transparent);
   animation: fadeup 0.9s ease 0.6s both, bob 3s ease-in-out 1.5s infinite;
 }
 @keyframes bob {

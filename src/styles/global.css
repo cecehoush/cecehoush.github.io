@@ -10,6 +10,129 @@
   --text: #E8F0FC;
   --muted: rgba(232, 240, 252, 0.42);
   --rule: rgba(106, 174, 224, 0.14);
+
+  /* Extra theme tokens (added for light-mode support) */
+  --nav-bg: rgba(7, 10, 18, 0.85);
+  --card-bg: rgba(255, 255, 255, 0.025);
+  --heading: #ffffff;
+  --heading-stroke: rgba(255, 255, 255, 0.88);
+  --hero-pre: rgba(255, 255, 255, 0.28);
+
+  /* Dark-mode defaults for the scheme-tunable tokens. Light schemes below
+     override these; dark mode keeps its original look. */
+  --card-border: rgba(106, 174, 224, 0.15);
+  --btn-border: rgba(106, 174, 224, 0.28);
+  --btn-text: rgba(232, 240, 252, 0.55);
+  --btn-lav-border: rgba(176, 144, 224, 0.28);
+  --btn-lav-text: rgba(176, 144, 224, 0.55);
+  --bubble-stroke-1: #6AAEE0;
+  --bubble-stroke-2: #B090E0;
+  --orb-stroke: rgba(106, 174, 224, 0.22);
+  --connector: rgba(106, 174, 224, 0.12);
+}
+
+/* ============================================================
+   LIGHT MODE SCHEME SWITCHER
+   To test a different scheme: comment out the active block
+   below and uncomment the one you want. Only one should be
+   active at a time.
+   Options: A (Cool Blue-White) · C (Lavender Mist) · D (Hybrid Dark Cards) · E (Slate Stone)
+   Currently active: A
+   ------------------------------------------------------------
+   NOTE: scheme D's dark project cards rely on a matching
+   LIGHT_SCHEME constant in src/context/ThemeContext.jsx.
+   If you switch to D, also set LIGHT_SCHEME = 'd' there.
+   ============================================================ */
+[data-theme="light"] {
+  /* Shared light tokens (not scheme-specific). Scheme D overrides --card-bg. */
+  --surface2: #D6E2F0;
+  --nav-bg: rgba(240, 245, 252, 0.85);
+  --card-bg: rgba(13, 26, 46, 0.035);
+  --hero-pre: rgba(13, 26, 46, 0.55);
+  /* --blue, --lav, --orange intentionally unchanged across all schemes */
+
+  /* ===== SCHEME A — Cool Blue-White (ACTIVE) ===== */
+  --bg: #EEF4FB;
+  --surface: #E2EBF6;
+  --card-bg: #D8E6F5;
+  --text: #0D1A2E;
+  --muted: rgba(13, 26, 46, 0.68);
+  --rule: rgba(13, 26, 46, 0.20);
+  --heading: #0D1A2E;
+  --heading-stroke: rgba(13, 26, 46, 0.85);
+  --card-border: rgba(13, 26, 46, 0.1);
+  --btn-border: rgba(13, 26, 46, 0.40);
+  --btn-text: rgba(13, 26, 46, 0.78);
+  --btn-lav-border: rgba(120, 88, 184, 0.50);
+  --btn-lav-text: #5A389A;
+  --bubble-stroke-1: rgba(20, 60, 160, 0.62);
+  --bubble-stroke-2: rgba(80, 40, 180, 0.55);
+  --orb-stroke: rgba(20, 60, 160, 0.3);
+  --connector: rgba(20, 60, 160, 0.18);
+
+  /* ===== SCHEME C — Lavender Mist ===== */
+  /* --bg: #F2F0FA;
+  --surface: #E8E4F5;
+  --card-bg: #E8E4F5;
+  --text: #14102A;
+  --muted: rgba(20, 16, 42, 0.68);
+  --rule: rgba(20, 16, 42, 0.20);
+  --heading: #14102A;
+  --heading-stroke: rgba(20, 16, 42, 0.85);
+  --card-border: rgba(20, 16, 42, 0.12);
+  --btn-border: rgba(20, 16, 42, 0.40);
+  --btn-text: rgba(20, 16, 42, 0.78);
+  --btn-lav-border: rgba(104, 72, 184, 0.50);
+  --btn-lav-text: #5A389A;
+  --bubble-stroke-1: rgba(40, 30, 160, 0.62);
+  --bubble-stroke-2: rgba(100, 50, 190, 0.55);
+  --orb-stroke: rgba(60, 40, 170, 0.24);
+  --connector: rgba(60, 40, 170, 0.16); */ 
+  /*===== end SCHEME C =====
+
+  /* ===== SCHEME D — Hybrid Dark Cards =====
+     (--surface kept light to protect the skill drawer; --heading kept dark
+     for the About/hero headings on the light bg. Project cards go dark via
+     --card-bg + the [data-scheme="d"] .card overrides in Projects.module.css.
+     Also set LIGHT_SCHEME = 'd' in ThemeContext.jsx.)*/
+  /* --bg: #EEF4FB;
+  --surface: #E2EBF6;
+  --card-bg: #141E32;
+  --text: #0D1A2E;
+  --muted: rgba(13, 26, 46, 0.68);
+  --rule: rgba(13, 26, 46, 0.20);
+  --heading: #0D1A2E;
+  --heading-stroke: rgba(13, 26, 46, 0.85);
+  --card-border: rgba(106, 174, 224, 0.25);
+  --btn-border: rgba(13, 26, 46, 0.40);
+  --btn-text: rgba(13, 26, 46, 0.78);
+  --btn-lav-border: rgba(176, 144, 224, 0.50);
+  --btn-lav-text: #5A389A;
+  --bubble-stroke-1: rgba(20, 60, 160, 0.62);
+  --bubble-stroke-2: rgba(80, 40, 180, 0.55);
+  --orb-stroke: rgba(20, 60, 160, 0.3);
+  --connector: rgba(20, 60, 160, 0.18); */
+  /*===== end SCHEME D ===== */
+
+  /* ===== SCHEME E — Slate Stone =====*/
+  /* --bg: #F0F2F5;
+  --surface: #E4E8EF;
+  --card-bg: #DDE1E8;
+  --text: #10141E;
+  --muted: rgba(16, 20, 30, 0.68);
+  --rule: rgba(16, 20, 30, 0.20);
+  --heading: #10141E;
+  --heading-stroke: rgba(16, 20, 30, 0.85);
+  --card-border: rgba(16, 20, 30, 0.1);
+  --btn-border: rgba(16, 20, 30, 0.40);
+  --btn-text: rgba(16, 20, 30, 0.78);
+  --btn-lav-border: rgba(106, 82, 176, 0.50);
+  --btn-lav-text: #5A389A;
+  --bubble-stroke-1: rgba(30, 60, 150, 0.62);
+  --bubble-stroke-2: rgba(70, 40, 170, 0.55);
+  --orb-stroke: rgba(30, 60, 150, 0.26);
+  --connector: rgba(30, 60, 150, 0.16); */
+  /*===== end SCHEME E ===== */
 }
 
 html { scroll-behavior: smooth; }
@@ -19,4 +142,5 @@ body {
   background: var(--bg);
   color: var(--text);
   overflow-x: hidden;
+  transition: background 0.3s ease, color 0.3s ease;
 }

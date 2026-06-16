@@ -24,7 +24,7 @@ export default function FigmaModal({ project, onClose }) {
 
   return (
     <div className={`${styles.modal} ${open ? styles.open : ''}`}>
-      <div className={styles.backdrop} onClick={onClose}></div>
+      <button type="button" className={styles.backdrop} onClick={onClose} aria-label="Close Figma preview"></button>
       <div className={styles.panel}>
         <div className={styles.topbar}>
           <div className={styles.titleWrap}>

@@ -7,14 +7,14 @@
 }
 .left {
   font-size: 0.69rem;
-  color: rgba(232, 240, 252, 0.2);
+  color: color-mix(in srgb, var(--text) 20%, transparent);
   letter-spacing: 0.08em;
 }
 .links {
   display: flex;
   gap: 1.5rem;
   font-size: 0.69rem;
-  color: rgba(232, 240, 252, 0.3);
+  color: color-mix(in srgb, var(--text) 30%, transparent);
 }
 .links a {
   text-decoration: none;
@@ -24,3 +24,9 @@
 .links a:hover {
   color: var(--blue);
 }
+
+/* Light-mode WCAG-AA contrast. The hover rule is re-declared so the blue
+   hover still wins over the darker resting color (equal specificity). */
+[data-theme="light"] .left { color: rgba(13, 26, 46, 0.65); }
+[data-theme="light"] .links a { color: rgba(13, 26, 46, 0.65); }
+[data-theme="light"] .links a:hover { color: var(--blue); }

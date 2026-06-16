@@ -13,7 +13,7 @@
   font-size: 0.66rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: rgba(106, 174, 224, 0.52);
+  color: var(--muted);
   margin-bottom: 1rem;
   display: flex;
   align-items: center;
@@ -23,20 +23,20 @@
   content: '';
   flex: 1;
   height: 0.5px;
-  background: rgba(106, 174, 224, 0.1);
+  background: var(--rule);
 }
 .aboutH {
   font-family: 'Syne', sans-serif;
   font-size: 1.65rem;
   font-weight: 800;
-  color: #fff;
+  color: var(--heading);
   line-height: 1.1;
   margin-bottom: 0.9rem;
 }
 .aboutP {
   font-size: 0.83rem;
   line-height: 1.78;
-  color: rgba(232, 240, 252, 0.45);
+  color: color-mix(in srgb, var(--text) 45%, transparent);
   font-weight: 300;
 }
 .stats {
@@ -49,7 +49,8 @@
   align-items: center;
   gap: 1rem;
   padding: 0.9rem 1rem;
-  border: 0.5px solid rgba(106, 174, 224, 0.13);
+  background: var(--card-bg);
+  border: 0.5px solid var(--card-border);
   border-radius: 10px;
   cursor: default;
   will-change: transform;
@@ -78,10 +79,20 @@
 }
 .statLbl {
   font-size: 0.67rem;
-  color: rgba(232, 240, 252, 0.36);
+  color: var(--muted);
   margin-top: 0.13rem;
   letter-spacing: 0.04em;
 }
+
+/* The lavender stat value ("NSF funded") — lifted out of an inline style so
+   light-mode overrides can win. */
+.statValLav { color: var(--lav); }
+
+/* Light-mode WCAG-AA contrast overrides (body text + stat values on the light
+   --card-bg). .statValLav comes after .statVal so the lav stat wins. */
+[data-theme="light"] .aboutP { color: rgba(13, 26, 46, 0.82); }
+[data-theme="light"] .statVal { color: #0F3D7A; }
+[data-theme="light"] .statValLav { color: #4A2E8A; }
 
 /* ── FADE IN ── */
 .fadeIn {

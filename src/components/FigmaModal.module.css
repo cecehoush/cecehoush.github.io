@@ -16,9 +16,12 @@
 .backdrop {
   position: absolute;
   inset: 0;
+  width: 100%;
   background: rgba(4, 6, 14, 0.88);
   backdrop-filter: blur(10px);
   cursor: pointer;
+  border: none;
+  padding: 0;
 }
 .panel {
   position: relative;
