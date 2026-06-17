@@ -8,7 +8,7 @@
   --lav: #B090E0;
   --orange: #FF9D4D;
   --text: #E8F0FC;
-  --muted: rgba(232, 240, 252, 0.42);
+  --muted: rgba(232, 240, 252, 0.58);
   --rule: rgba(106, 174, 224, 0.14);
 
   /* Extra theme tokens (added for light-mode support) */
@@ -16,7 +16,7 @@
   --card-bg: rgba(255, 255, 255, 0.025);
   --heading: #ffffff;
   --heading-stroke: rgba(255, 255, 255, 0.88);
-  --hero-pre: rgba(255, 255, 255, 0.28);
+  --hero-pre: rgba(255, 255, 255, 0.62);
 
   /* Dark-mode defaults for the scheme-tunable tokens. Light schemes below
      override these; dark mode keeps its original look. */
@@ -24,7 +24,7 @@
   --btn-border: rgba(106, 174, 224, 0.28);
   --btn-text: rgba(232, 240, 252, 0.55);
   --btn-lav-border: rgba(176, 144, 224, 0.28);
-  --btn-lav-text: rgba(176, 144, 224, 0.55);
+  --btn-lav-text: rgba(176, 144, 224, 0.82);
   --bubble-stroke-1: #6AAEE0;
   --bubble-stroke-2: #B090E0;
   --orb-stroke: rgba(106, 174, 224, 0.22);

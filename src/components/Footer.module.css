@@ -7,21 +7,23 @@
 }
 .left {
   font-size: 0.69rem;
-  color: color-mix(in srgb, var(--text) 20%, transparent);
+  color: rgba(232, 240, 252, 0.58);
   letter-spacing: 0.08em;
 }
 .links {
   display: flex;
   gap: 1.5rem;
   font-size: 0.69rem;
-  color: color-mix(in srgb, var(--text) 30%, transparent);
 }
 .links a {
   text-decoration: none;
-  color: inherit;
+  color: rgba(232, 240, 252, 0.58);
   transition: color 0.2s;
 }
 .links a:hover {
+  color: var(--blue);
+}
+[data-theme="dark"] .links a:hover {
   color: var(--blue);
 }
 

@@ -159,9 +159,9 @@ export default function Hero() {
         <div className={styles.eyebrow}>HCI Researcher · University of Denver · 2025</div>
         <div className={styles.heading}>
           <div className={styles.pre}>building for</div>
-          <div className={styles.main}>
+          <h1 className={styles.main}>
             <span className={styles.outlined}>{word}</span><span className={styles.heroDot}>.</span>
-          </div>
+          </h1>
         </div>
         <div className={styles.sub}>First-year CS PhD student designing AI interfaces that work for those who need them most.</div>
         <div className={styles.hint}>↓ move your cursor · click a skill below · try Figma ✦</div>

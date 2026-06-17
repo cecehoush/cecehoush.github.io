@@ -47,12 +47,11 @@ export default function FigmaModal({ project, onClose }) {
                   <div
                     className={styles.phoneWrap}
                     key={i}
-                    style={{
-                      transform: i === 0 ? 'scale(1)' : 'scale(0.88)',
-                      opacity: i === 0 ? 1 : 0.72,
-                    }}
+                    style={{ transform: i === 0 ? 'scale(1)' : 'scale(0.88)' }}
                   >
-                    <div className={styles.phone}>
+                    {/* Dim only the phone frame/screen for hierarchy — the label
+                        below keeps full opacity so it stays legible. */}
+                    <div className={styles.phone} style={{ opacity: i === 0 ? 1 : 0.72 }}>
                       <div className={styles.phoneNotch}></div>
                       <div
                         className={styles.phoneScreen}

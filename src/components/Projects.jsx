@@ -45,7 +45,7 @@ export default function Projects() {
       id="projects"
       ref={ref}
     >
-      <div className={styles.secLabel}>Selected work</div>
+      <h2 className={styles.secLabel}>Selected work</h2>
       <div className={styles.cardGrid}>
         {cards.map((card, i) => (
           <ProjectCard card={card} key={i} />

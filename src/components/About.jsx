@@ -34,7 +34,7 @@ export default function About() {
       ref={ref}
     >
       <div>
-        <div className={styles.secLabel}>About</div>
+        <h2 className={styles.secLabel}>About</h2>
         <div className={styles.aboutH}>Building tech for people who actually need it.</div>
         <p className={styles.aboutP}>
           First-year CS PhD student at the University of Denver specializing in HCI. Graduate Research Assistant on the NSF Colorado Sustainability Hub — building accessible LLM interfaces and researching health pattern recognition for underserved communities.

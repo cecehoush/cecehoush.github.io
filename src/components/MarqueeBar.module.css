@@ -86,6 +86,14 @@
 [data-theme="light"] .tag.lav {
   color: #4A2E8A;
 }
+/* Dark-mode contrast: the resting fig/lav tag alphas are too faint on the dark
+   bg, so use full-strength accents (hover/active already use these). */
+[data-theme="dark"] .tag.fig {
+  color: #FF9D4D;
+}
+[data-theme="dark"] .tag.lav {
+  color: var(--lav);
+}
 
 /* ── SKILL DRAWER ── */
 .drawer {
@@ -269,10 +277,10 @@
 /* Figma (warm) drawer + cards stay dark in both themes, so their text
    is forced light regardless of the active theme. */
 .drawerInner.figmaMode .drawerLabel {
-  color: rgba(232, 240, 252, 0.32);
+  color: rgba(232, 240, 252, 0.62);
 }
 .drawerInner.figmaMode .drawerClose {
-  color: rgba(232, 240, 252, 0.28);
+  color: rgba(232, 240, 252, 0.62);
   background: rgba(255, 255, 255, 0.04);
   border-color: rgba(255, 255, 255, 0.1);
 }
@@ -281,11 +289,14 @@
   background: rgba(255, 255, 255, 0.09);
   border-color: rgba(255, 255, 255, 0.2);
 }
+.projItem.figCard .piNum {
+  color: rgba(176, 144, 224, 0.85);
+}
 .projItem.figCard .piTitle {
   color: #fff;
 }
 .projItem.figCard .piDesc {
-  color: rgba(232, 240, 252, 0.42);
+  color: rgba(232, 240, 252, 0.68);
 }
 .piFigmaHint {
   display: flex;
@@ -293,7 +304,7 @@
   gap: 0.35rem;
   margin-top: 0.55rem;
   font-size: 0.63rem;
-  color: rgba(255, 157, 77, 0.55);
+  color: rgba(255, 157, 77, 0.85);
   letter-spacing: 0.06em;
 }
 .piArrow {

@@ -11,6 +11,7 @@
 }
 .secLabel {
   font-size: 0.66rem;
+  font-weight: 400;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--muted);
@@ -36,7 +37,7 @@
 .aboutP {
   font-size: 0.83rem;
   line-height: 1.78;
-  color: color-mix(in srgb, var(--text) 45%, transparent);
+  color: var(--muted);
   font-weight: 300;
 }
 .stats {
