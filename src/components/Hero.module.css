@@ -54,7 +54,8 @@
   text-transform: uppercase;
 }
 .main {
-  font-family: 'Syne', sans-serif;
+  font-family: 'Rubik', sans-serif; 
+  /* Bitcount Grid Double / Bitcount Single, Lobster Two, Croissant One, or Rubik */
   font-size: 5.5rem;
   font-weight: 800;
   line-height: 0.88;
