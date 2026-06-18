@@ -2,7 +2,7 @@ import { useTilt } from '../hooks/useTilt.js';
 import { useScrollFadeIn } from '../hooks/useScrollFadeIn.js';
 import styles from './About.module.css';
 
-function StatRow({ style, iconStyle, icon, val, valClassName, lbl }) {
+function StatRow({ style, iconStyle, icon, val, lbl }) {
   const { ref } = useTilt({
     maxDeg: 12,
     lerp: 0.15,
@@ -17,7 +17,7 @@ function StatRow({ style, iconStyle, icon, val, valClassName, lbl }) {
     <div className={styles.stat} style={style} ref={ref}>
       <div className={styles.statIcon} style={iconStyle}>{icon}</div>
       <div>
-        <div className={valClassName ? `${styles.statVal} ${valClassName}` : styles.statVal}>{val}</div>
+        <div className={styles.statVal}>{val}</div>
         <div className={styles.statLbl}>{lbl}</div>
       </div>
     </div>
@@ -62,7 +62,6 @@ export default function About() {
             </svg>
           }
           val="NSF funded"
-          valClassName={styles.statValLav}
           lbl="Graduate Research Assistant"
         />
         <StatRow

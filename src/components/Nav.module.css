@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2.5rem;
+  padding: 1rem var(--page-inset);
   border-bottom: 0.5px solid var(--rule);
   position: sticky;
   top: 0;
@@ -18,6 +18,9 @@
   display: flex;
   align-items: center;
   gap: 0.55rem;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
 }
 .dot {
   width: 7px;
@@ -39,7 +42,7 @@
 .links {
   display: flex;
   gap: 1.8rem;
-  font-size: 0.73rem;
+  font-size: 0.78rem;
   color: var(--muted);
   letter-spacing: 0.08em;
 }
@@ -48,8 +51,24 @@
   color: inherit;
   cursor: pointer;
   transition: color 0.2s;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
 }
-.links a:hover { color: var(--blue); }
+/* Reserve the bold (hover) width via a hidden bold copy so bold-on-hover causes
+   zero layout shift. Requires data-text matching the link's visible label. */
+.links a::after {
+  content: attr(data-text);
+  font-weight: 600;
+  height: 0;
+  overflow: hidden;
+  visibility: hidden;
+  pointer-events: none;
+  user-select: none;
+}
+.links a:hover { color: var(--blue); font-weight: 600; }
+/* Unified accent: dark blue passes on the light bg; dark mode keeps var(--blue). */
+[data-theme="light"] .links a:hover { color: #1A5090; }
 .divider {
   width: 0.5px;
   height: 18px;
@@ -94,4 +113,99 @@
   border-color: var(--lav);
   color: var(--lav);
   background: rgba(176, 144, 224, 0.07);
+}
+
+/* ── MOBILE MENU (hamburger) ── */
+.menu {
+  display: none; /* desktop (>600px): never rendered */
+}
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  background: transparent;
+  border: 0.5px solid var(--btn-border);
+  border-radius: 6px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.hamburger span {
+  display: block;
+  width: 16px;
+  height: 1.5px;
+  border-radius: 1px;
+  background: var(--btn-text);
+  transition: transform 0.25s ease, opacity 0.2s ease;
+}
+.hamburger:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
+}
+.hamburgerOpen span:nth-child(1) { transform: translateY(5.5px) rotate(45deg); }
+.hamburgerOpen span:nth-child(2) { opacity: 0; }
+.hamburgerOpen span:nth-child(3) { transform: translateY(-5.5px) rotate(-45deg); }
+
+.menuPanel {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  min-width: 150px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: 0.5rem;
+  background: var(--surface);
+  border: 0.5px solid var(--card-border);
+  border-radius: 10px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+  z-index: 60;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0s linear 0.2s;
+}
+.menuPanelOpen {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0s;
+}
+.menuPanel a {
+  text-decoration: none;
+  color: var(--muted);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  padding: 0.5rem 0.6rem;
+  border-radius: 6px;
+  transition: color 0.2s, background 0.2s;
+}
+.menuPanel a:hover {
+  color: var(--blue);
+  background: color-mix(in srgb, var(--blue) 8%, transparent);
+}
+[data-theme="light"] .menuPanel a:hover {
+  color: #1A5090;
+}
+
+/* Responsive: tighten gaps, then swap the inline links for the hamburger menu
+   on small screens so the nav never overflows (logo / Resume / CV / theme
+   toggle stay exactly where they are). */
+@media (max-width: 768px) {
+  .right { gap: 1rem; }
+}
+@media (max-width: 600px) {
+  .links,
+  .divider {
+    display: none;
+  }
+  .menu {
+    display: flex;
+    position: relative;
+    align-items: center;
+  }
 }

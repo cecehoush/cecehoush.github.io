@@ -31,7 +31,7 @@ function ProjectCard({ card }) {
         <div className={styles.cardType}>{card.type}</div>
         <div className={styles.cardDesc}>{card.desc}</div>
       </div>
-      <div className={styles.cardArrow}>↗</div>
+      <div className={styles.cardArrow} aria-hidden="true">↗</div>
     </div>
   );
 }

@@ -164,7 +164,6 @@ export default function Hero() {
           </h1>
         </div>
         <div className={styles.sub}>First-year CS PhD student designing AI interfaces that work for those who need them most.</div>
-        <div className={styles.hint}>↓ move your cursor · click a skill below · try Figma ✦</div>
       </div>
     </section>
   );

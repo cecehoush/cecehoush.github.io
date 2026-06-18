@@ -1,8 +1,8 @@
 .section {
-  padding: 2.5rem 2.5rem 2rem;
+  padding: 2.5rem var(--page-inset) 2rem;
 }
 .secLabel {
-  font-size: 0.66rem;
+  font-size: 0.70rem;
   font-weight: 400;
   letter-spacing: 0.22em;
   text-transform: uppercase;
@@ -52,7 +52,7 @@
   z-index: 2;
 }
 .cardNum {
-  font-size: 0.61rem;
+  font-size: 0.64rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: rgba(176, 144, 224, 0.78);
@@ -61,14 +61,14 @@
 }
 .cardTitle {
   font-family: 'Syne', sans-serif;
-  font-size: 1.06rem;
+  font-size: 1.12rem;
   font-weight: 700;
   color: var(--heading);
   margin-bottom: 0.26rem;
   line-height: 1.2;
 }
 .cardType {
-  font-size: 0.64rem;
+  font-size: 0.67rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--blue);
@@ -76,7 +76,7 @@
   font-weight: 500;
 }
 .cardDesc {
-  font-size: 0.75rem;
+  font-size: 0.80rem;
   color: var(--muted);
   line-height: 1.55;
   font-weight: 300;

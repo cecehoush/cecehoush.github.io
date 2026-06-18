@@ -1,5 +1,5 @@
 .about {
-  padding: 2rem 2.5rem 2.5rem;
+  padding: 2rem var(--page-inset) 2.5rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 3.5rem;
@@ -10,7 +10,7 @@
   .about { grid-template-columns: 1fr; }
 }
 .secLabel {
-  font-size: 0.66rem;
+  font-size: 0.70rem;
   font-weight: 400;
   letter-spacing: 0.22em;
   text-transform: uppercase;
@@ -35,7 +35,7 @@
   margin-bottom: 0.9rem;
 }
 .aboutP {
-  font-size: 0.83rem;
+  font-size: 0.88rem;
   line-height: 1.78;
   color: var(--muted);
   font-weight: 300;
@@ -73,27 +73,22 @@
 }
 .statVal {
   font-family: 'Syne', sans-serif;
-  font-size: 1.05rem;
+  font-size: 1.10rem;
   font-weight: 700;
   color: var(--blue);
   line-height: 1;
 }
 .statLbl {
-  font-size: 0.67rem;
+  font-size: 0.72rem;
   color: var(--muted);
   margin-top: 0.13rem;
   letter-spacing: 0.04em;
 }
 
-/* The lavender stat value ("NSF funded") — lifted out of an inline style so
-   light-mode overrides can win. */
-.statValLav { color: var(--lav); }
-
 /* Light-mode WCAG-AA contrast overrides (body text + stat values on the light
-   --card-bg). .statValLav comes after .statVal so the lav stat wins. */
+   --card-bg). All three stat values share the same .statVal color. */
 [data-theme="light"] .aboutP { color: rgba(13, 26, 46, 0.82); }
 [data-theme="light"] .statVal { color: #0F3D7A; }
-[data-theme="light"] .statValLav { color: #4A2E8A; }
 
 /* ── FADE IN ── */
 .fadeIn {

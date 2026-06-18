@@ -48,7 +48,7 @@
   --surface2: #D6E2F0;
   --nav-bg: rgba(240, 245, 252, 0.85);
   --card-bg: rgba(13, 26, 46, 0.035);
-  --hero-pre: rgba(13, 26, 46, 0.55);
+  --hero-pre: rgba(13, 26, 46, 0.70);
   /* --blue, --lav, --orange intentionally unchanged across all schemes */
 
   /* ===== SCHEME A — Cool Blue-White (ACTIVE) ===== */
@@ -143,4 +143,21 @@ body {
   color: var(--text);
   overflow-x: hidden;
   transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* ── SHARED LAYOUT ──
+   Every full-width block uses --page-inset for its horizontal padding, which
+   keeps content capped at --page-max (centered) on wide screens while shrinking
+   the gutter on small ones. This makes the nav and all sections track identical
+   widths at every viewport. */
+:root {
+  --page-pad: 2.5rem;
+  --page-max: 1400px;
+  --page-inset: max(var(--page-pad), calc((100% - var(--page-max)) / 2));
+}
+@media (max-width: 768px) {
+  :root { --page-pad: 1.5rem; }
+}
+@media (max-width: 480px) {
+  :root { --page-pad: 1.1rem; }
 }

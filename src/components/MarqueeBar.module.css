@@ -51,13 +51,6 @@
   color: var(--blue);
   border-bottom-color: var(--blue);
 }
-.tag.lav {
-  color: rgba(176, 144, 224, 0.35);
-}
-.tag.lav:hover, .tag.lav.active {
-  color: var(--lav);
-  border-bottom-color: var(--lav);
-}
 .tag.fig {
   color: rgba(255, 157, 77, 0.42);
 }
@@ -77,22 +70,25 @@
   opacity: 0.7;
 }
 
-/* Light-mode contrast: marquee tag accents need darker variants to pass
+/* Light-mode contrast: the Figma tag accent needs a darker variant to pass
    WCAG AA on the light bg. Scoped to .tag so the Figma drawer's (dark)
    .piType labels are unaffected. */
 [data-theme="light"] .tag.fig {
   color: #A84A00;
 }
-[data-theme="light"] .tag.lav {
-  color: #4A2E8A;
-}
-/* Dark-mode contrast: the resting fig/lav tag alphas are too faint on the dark
-   bg, so use full-strength accents (hover/active already use these). */
+/* Dark-mode contrast: the resting fig tag alpha is too faint on the dark bg. */
 [data-theme="dark"] .tag.fig {
   color: #FF9D4D;
 }
-[data-theme="dark"] .tag.lav {
-  color: var(--lav);
+
+/* Unified hover/active accent for all non-Figma tags (matches the nav links):
+   a dark blue that passes on the light bg; dark mode keeps var(--blue). A single
+   color can't clear 4.5:1 on both near-white and near-black, so it's split by
+   theme. :not(.fig) keeps the Figma tag's orange untouched. */
+[data-theme="light"] .tag:not(.fig):hover,
+[data-theme="light"] .tag:not(.fig).active {
+  color: #1A5090;
+  border-bottom-color: #1A5090;
 }
 
 /* ── SKILL DRAWER ── */
@@ -110,7 +106,7 @@
   background: var(--surface);
   border-top: 2px solid var(--blue);
   border-bottom: 2px solid rgba(106, 174, 224, 0.2);
-  padding: 1.5rem 2.5rem 1.8rem;
+  padding: 1.5rem var(--page-inset) 1.8rem;
   position: relative;
 }
 .drawerInner::before {
@@ -146,7 +142,7 @@
   font-size: 0.62rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: color-mix(in srgb, var(--text) 32%, transparent);
+  color: var(--muted);
 }
 .drawerSkillName {
   font-family: 'Syne', sans-serif;
@@ -156,9 +152,16 @@
   margin-left: 0.2rem;
   letter-spacing: 0;
 }
+.drawerSkillName.lav {
+  color: var(--lav);
+}
+/* Figma drawer is always dark → its skill name stays bright orange. */
+.drawerInner.figmaMode .drawerSkillName {
+  color: var(--orange);
+}
 .drawerClose {
   font-size: 0.68rem;
-  color: color-mix(in srgb, var(--text) 28%, transparent);
+  color: var(--muted);
   cursor: pointer;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -245,7 +248,7 @@
   font-size: 0.58rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgba(176, 144, 224, 0.5);
+  color: rgba(176, 144, 224, 0.85);
   margin-bottom: 0.28rem;
   font-family: 'Syne', sans-serif;
 }
@@ -297,6 +300,25 @@
 }
 .projItem.figCard .piDesc {
   color: rgba(232, 240, 252, 0.68);
+}
+
+/* Light mode, regular (non-Figma) drawer: the bright blue/lav accents fail on
+   the light surface, so use darker variants. Scoped to :not(.figmaMode) so the
+   warm dark Figma drawer keeps its accents. */
+[data-theme="light"] .drawerInner:not(.figmaMode) .drawerSkillName {
+  color: #0F3D7A;
+}
+[data-theme="light"] .drawerInner:not(.figmaMode) .drawerSkillName.lav {
+  color: #4A2E8A;
+}
+[data-theme="light"] .drawerInner:not(.figmaMode) .piNum {
+  color: #4A2E8A;
+}
+[data-theme="light"] .drawerInner:not(.figmaMode) .piType {
+  color: #0F3D7A;
+}
+[data-theme="light"] .drawerInner:not(.figmaMode) .piType.lav {
+  color: #4A2E8A;
 }
 .piFigmaHint {
   display: flex;

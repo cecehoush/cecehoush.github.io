@@ -34,13 +34,11 @@ export default function MarqueeBar({ onOpenFigma }) {
       setActiveSkill(null);
       return;
     }
-    const color = sk.fig ? 'var(--orange)' : sk.lav ? 'var(--lav)' : 'var(--blue)';
     setActiveSkill(sk.label);
     setDrawerData({
       skillLabel: sk.label,
       isFig: sk.fig,
       isLav: sk.lav,
-      color,
       matched: matchProjects(sk.label, sk.fig),
     });
     setOpen(true);
@@ -63,7 +61,6 @@ export default function MarqueeBar({ onOpenFigma }) {
                 type="button"
                 className={[
                   styles.tag,
-                  sk.lav ? styles.lav : '',
                   sk.fig ? styles.fig : '',
                   activeSkill === sk.label ? styles.active : '',
                 ].filter(Boolean).join(' ')}
@@ -82,7 +79,7 @@ export default function MarqueeBar({ onOpenFigma }) {
           <div className={styles.drawerHeader}>
             <div className={styles.drawerLabel}>
               Projects using{' '}
-              <span className={styles.drawerSkillName} style={{ color: drawerData?.color }}>
+              <span className={[styles.drawerSkillName, drawerData?.isLav ? styles.lav : ''].filter(Boolean).join(' ')}>
                 {drawerData?.skillLabel ?? '—'}
               </span>
             </div>
@@ -118,7 +115,7 @@ export default function MarqueeBar({ onOpenFigma }) {
                       {figmaPinkSvg} View screens
                     </div>
                   )}
-                  <div className={styles.piArrow}>↗</div>
+                  <div className={styles.piArrow} aria-hidden="true">↗</div>
                 </>
               );
               // Figma projects open the modal (interactive → button); others are

@@ -1,3 +1,4 @@
+import { useState, useEffect, useRef } from 'react';
 import styles from './Nav.module.css';
 import { useTheme } from '../context/ThemeContext.jsx';
 import BubbleToggle from './toggles/BubbleToggle.jsx';
@@ -15,18 +16,71 @@ const TOGGLES = {
 export default function Nav() {
   const { isDark, toggle } = useTheme();
   const ThemeToggle = TOGGLES[TOGGLE_VARIANT];
+  const [menuOpen, setMenuOpen] = useState(false);
+  const menuRef = useRef(null);
+  const hamburgerRef = useRef(null);
+
+  // Close the mobile menu on Escape (return focus to the button) or an outside
+  // click — only while it's open.
+  useEffect(() => {
+    if (!menuOpen) return;
+    function onKey(e) {
+      if (e.key === 'Escape') {
+        setMenuOpen(false);
+        hamburgerRef.current?.focus();
+      }
+    }
+    function onPointerDown(e) {
+      if (menuRef.current && !menuRef.current.contains(e.target)) setMenuOpen(false);
+    }
+    document.addEventListener('keydown', onKey);
+    document.addEventListener('mousedown', onPointerDown);
+    return () => {
+      document.removeEventListener('keydown', onKey);
+      document.removeEventListener('mousedown', onPointerDown);
+    };
+  }, [menuOpen]);
+
+  // If the viewport grows back to the desktop nav, force the menu closed so it
+  // can't persist in a broken half-state.
+  useEffect(() => {
+    const mq = window.matchMedia('(min-width: 601px)');
+    function onChange(e) { if (e.matches) setMenuOpen(false); }
+    mq.addEventListener('change', onChange);
+    return () => mq.removeEventListener('change', onChange);
+  }, []);
 
   return (
     <nav className={styles.nav}>
-      <div className={styles.logo}>
+      <a className={styles.logo} href="#hero">
         <div className={styles.dot}></div>
         Cece Housh
-      </div>
+      </a>
       <div className={styles.right}>
         <div className={styles.links}>
-          <a href="#projects">Projects</a>
-          <a href="#about">About</a>
-          <a href="#contact">Contact</a>
+          <a href="#projects" data-text="Projects">Projects</a>
+          <a href="#about" data-text="About">About</a>
+          <a href="#contact" data-text="Contact">Contact</a>
+        </div>
+        <div className={styles.menu} ref={menuRef}>
+          <button
+            type="button"
+            ref={hamburgerRef}
+            className={`${styles.hamburger} ${menuOpen ? styles.hamburgerOpen : ''}`}
+            aria-label="Menu"
+            aria-expanded={menuOpen}
+            aria-controls="nav-menu"
+            onClick={() => setMenuOpen((o) => !o)}
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+          <div className={`${styles.menuPanel} ${menuOpen ? styles.menuPanelOpen : ''}`} id="nav-menu">
+            <a href="#projects" onClick={() => setMenuOpen(false)}>Projects</a>
+            <a href="#about" onClick={() => setMenuOpen(false)}>About</a>
+            <a href="#contact" onClick={() => setMenuOpen(false)}>Contact</a>
+          </div>
         </div>
         <div className={styles.divider}></div>
         <div className={styles.actionsWrap}>

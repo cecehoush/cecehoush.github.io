@@ -1,19 +1,19 @@
 .footer {
-  padding: 1.2rem 2.5rem;
+  padding: 1.2rem var(--page-inset);
   border-top: 0.5px solid rgba(106, 174, 224, 0.1);
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 .left {
-  font-size: 0.69rem;
+  font-size: 0.74rem;
   color: rgba(232, 240, 252, 0.58);
   letter-spacing: 0.08em;
 }
 .links {
   display: flex;
   gap: 1.5rem;
-  font-size: 0.69rem;
+  font-size: 0.74rem;
 }
 .links a {
   text-decoration: none;
