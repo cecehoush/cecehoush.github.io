@@ -186,6 +186,16 @@
 }
 @media (max-width: 640px) {
   .projList { grid-template-columns: 1fr; }
+  /* Stacked single-column lists can exceed the fixed open height, so cap the
+     panel at the viewport and let it scroll internally instead of clipping
+     off-screen. */
+  .drawer.open {
+    max-height: 70vh;
+  }
+  .drawerInner {
+    max-height: 70vh;
+    overflow-y: auto;
+  }
 }
 .empty {
   font-size: 0.82rem;

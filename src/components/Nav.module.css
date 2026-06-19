@@ -175,7 +175,7 @@
   transform: translateY(0);
   transition: opacity 0.2s ease, transform 0.2s ease, visibility 0s;
 }
-.menuPanel a {
+.menuPanel .menuLink {
   text-decoration: none;
   color: var(--muted);
   font-size: 0.8rem;
@@ -184,12 +184,25 @@
   border-radius: 6px;
   transition: color 0.2s, background 0.2s;
 }
-.menuPanel a:hover {
+.menuPanel .menuLink:hover {
   color: var(--blue);
   background: color-mix(in srgb, var(--blue) 8%, transparent);
 }
-[data-theme="light"] .menuPanel a:hover {
+[data-theme="light"] .menuPanel .menuLink:hover {
   color: #1A5090;
+}
+/* Subtle separator between the page links and the Resume/CV actions. */
+.menuDivider {
+  height: 0.5px;
+  background: var(--rule);
+  margin: 0.35rem 0.1rem;
+}
+/* Resume/CV reuse the nav .btn look but go full-width, left-aligned in the
+   dropdown so they read as distinct actions below the plain links. */
+.menuPanel .menuBtn {
+  width: 100%;
+  justify-content: flex-start;
+  font-size: 0.74rem;
 }
 
 /* Responsive: tighten gaps, then swap the inline links for the hamburger menu
@@ -199,13 +212,20 @@
   .right { gap: 1rem; }
 }
 @media (max-width: 600px) {
+  /* Mobile nav = logo (left) + theme toggle + hamburger (far right). The page
+     links and Resume/CV buttons all move into the hamburger dropdown. */
   .links,
-  .divider {
+  .divider,
+  .actions {
     display: none;
   }
   .menu {
     display: flex;
     position: relative;
     align-items: center;
+    order: 2; /* hamburger sits at the far right */
+  }
+  .actionsWrap {
+    order: 1; /* theme toggle sits just left of the hamburger */
   }
 }

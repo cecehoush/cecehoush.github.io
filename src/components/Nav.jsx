@@ -13,6 +13,21 @@ const TOGGLES = {
   'window': WindowToggle,
 };
 
+const resumeIcon = (
+  <svg width="13" height="13" viewBox="0 0 14 14" fill="none">
+    <rect x="2" y="1" width="9" height="12" rx="1.5" stroke="currentColor" strokeWidth="1.5" />
+    <path d="M4.5 4.5h5M4.5 7h5M4.5 9.5h3" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+  </svg>
+);
+const cvIcon = (
+  <svg width="13" height="13" viewBox="0 0 14 14" fill="none">
+    <rect x="2" y="1" width="9" height="12" rx="1.5" stroke="currentColor" strokeWidth="1.5" />
+    <path d="M4.5 4.5h5M4.5 7h3.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+    <circle cx="10" cy="10.5" r="2.5" fill="var(--bg)" stroke="currentColor" strokeWidth="1.4" />
+    <path d="M9.3 10.5h1.4M10 9.8v1.4" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" />
+  </svg>
+);
+
 export default function Nav() {
   const { isDark, toggle } = useTheme();
   const ThemeToggle = TOGGLES[TOGGLE_VARIANT];
@@ -50,6 +65,8 @@ export default function Nav() {
     return () => mq.removeEventListener('change', onChange);
   }, []);
 
+  const closeMenu = () => setMenuOpen(false);
+
   return (
     <nav className={styles.nav}>
       <a className={styles.logo} href="#hero">
@@ -77,28 +94,29 @@ export default function Nav() {
             <span></span>
           </button>
           <div className={`${styles.menuPanel} ${menuOpen ? styles.menuPanelOpen : ''}`} id="nav-menu">
-            <a href="#projects" onClick={() => setMenuOpen(false)}>Projects</a>
-            <a href="#about" onClick={() => setMenuOpen(false)}>About</a>
-            <a href="#contact" onClick={() => setMenuOpen(false)}>Contact</a>
+            <a className={styles.menuLink} href="#projects" onClick={closeMenu}>Projects</a>
+            <a className={styles.menuLink} href="#about" onClick={closeMenu}>About</a>
+            <a className={styles.menuLink} href="#contact" onClick={closeMenu}>Contact</a>
+            <div className={styles.menuDivider}></div>
+            <a className={`${styles.btn} ${styles.menuBtn}`} href="/CeceHoush_Resume.pdf" target="_blank" rel="noopener noreferrer" onClick={closeMenu}>
+              {resumeIcon}
+              Resume
+            </a>
+            <a className={`${styles.btn} ${styles.lav} ${styles.menuBtn}`} href="/CeceHoushCV.pdf" target="_blank" rel="noopener noreferrer" onClick={closeMenu}>
+              {cvIcon}
+              CV
+            </a>
           </div>
         </div>
         <div className={styles.divider}></div>
         <div className={styles.actionsWrap}>
           <div className={styles.actions}>
             <a className={styles.btn} href="/CeceHoush_Resume.pdf" target="_blank" rel="noopener noreferrer">
-              <svg width="13" height="13" viewBox="0 0 14 14" fill="none">
-                <rect x="2" y="1" width="9" height="12" rx="1.5" stroke="currentColor" strokeWidth="1.5" />
-                <path d="M4.5 4.5h5M4.5 7h5M4.5 9.5h3" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
-              </svg>
+              {resumeIcon}
               Resume
             </a>
             <a className={`${styles.btn} ${styles.lav}`} href="/CeceHoushCV.pdf" target="_blank" rel="noopener noreferrer">
-              <svg width="13" height="13" viewBox="0 0 14 14" fill="none">
-                <rect x="2" y="1" width="9" height="12" rx="1.5" stroke="currentColor" strokeWidth="1.5" />
-                <path d="M4.5 4.5h5M4.5 7h3.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
-                <circle cx="10" cy="10.5" r="2.5" fill="var(--bg)" stroke="currentColor" strokeWidth="1.4" />
-                <path d="M9.3 10.5h1.4M10 9.8v1.4" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" />
-              </svg>
+              {cvIcon}
               CV
             </a>
           </div>
