@@ -75,9 +75,9 @@ export default function Nav() {
       </a>
       <div className={styles.right}>
         <div className={styles.links}>
-          <a href="#projects" data-text="Projects">Projects</a>
-          <a href="#about" data-text="About">About</a>
-          <a href="#contact" data-text="Contact">Contact</a>
+          <a href="#projects" data-text="Projects"><span className={styles.linkLabel}>Projects</span></a>
+          <a href="#about" data-text="About"><span className={styles.linkLabel}>About</span></a>
+          <a href="#contact" data-text="Contact"><span className={styles.linkLabel}>Contact</span></a>
         </div>
         <div className={styles.menu} ref={menuRef}>
           <button

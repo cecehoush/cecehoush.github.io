@@ -69,6 +69,35 @@
 .links a:hover { color: var(--blue); font-weight: 600; }
 /* Unified accent: dark blue passes on the light bg; dark mode keeps var(--blue). */
 [data-theme="light"] .links a:hover { color: #1A5090; }
+
+/* Rising-bubble hover — two soft circles drift up from under the label and fade,
+   echoing the hero particles. The reserve-width copy already uses .links a::after,
+   so the bubbles live on the wrapper span's ::before/::after. Desktop-only since
+   .links is display:none <=600px. */
+.linkLabel {
+  position: relative;
+}
+.linkLabel::before,
+.linkLabel::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  border-radius: 50%;
+  background: var(--blue);
+  opacity: 0;
+  pointer-events: none;
+}
+.linkLabel::before { width: 6px; height: 6px; left: 22%; }
+.linkLabel::after { width: 4px; height: 4px; left: 62%; }
+[data-theme="light"] .linkLabel::before,
+[data-theme="light"] .linkLabel::after { background: #1A5090; }
+.links a:hover .linkLabel::before { animation: navBubbleRise 0.95s ease-out; }
+.links a:hover .linkLabel::after { animation: navBubbleRise 0.95s ease-out 0.18s; }
+@keyframes navBubbleRise {
+  0% { opacity: 0; transform: translateY(2px) scale(0.5); }
+  25% { opacity: 0.65; }
+  100% { opacity: 0; transform: translateY(-24px) scale(1); }
+}
 .divider {
   width: 0.5px;
   height: 18px;
