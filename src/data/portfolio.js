@@ -3,19 +3,20 @@
 // and rendered via dangerouslySetInnerHTML so the Figma phone frames match.
 
 export const projects = [
-  { id: 0, num: '01', title: 'Accessible LLM Interfaces', type: 'Research · NSF', desc: 'Evaluating LLM interfaces for underserved communities.', skills: ['Accessibility', 'A11y', 'WCAG', 'HCI', 'LLM Evaluation', 'AI', 'Research'], lav: false, figma: false },
-  { id: 1, num: '02', title: 'Lucent', type: 'Hackathon · 1st place', desc: 'AI mental wellness app — DU/MSU/CU Denver Hackathon winner.', skills: ['Flutter', 'Firebase', 'Figma', 'AI', 'HCI', 'Mobile Dev'], lav: false, figma: true },
-  { id: 2, num: '03', title: 'Lattice', type: 'Hackathon · 25 hrs', desc: 'AI learning path generator with Firebase, MongoDB, Google ADK.', skills: ['Flutter', 'Firebase', 'MongoDB', 'Google ADK', 'Figma', 'AI', 'Mobile Dev'], lav: true, figma: true },
-  { id: 3, num: '04', title: 'Roadrunner Connect', type: 'Mobile · Project Lead', desc: 'Campus engagement app for the University of Denver.', skills: ['Flutter', 'Firebase', 'MongoDB', 'Figma', 'Mobile Dev', 'HCI'], lav: true, figma: true },
+  { id: 0, num: '01', title: 'Accessible LLM Interfaces', type: 'Research · NSF', desc: 'Evaluating LLM interfaces for underserved communities.', skills: ['Accessibility', 'HCI', 'LLM Evaluation', 'AI', 'Research'], lav: false, figma: false },
+  { id: 1, num: '02', title: 'Lucent', type: 'Hackathon · 1st place', desc: 'AI mental wellness app — DU/MSU/CU Denver Hackathon winner.', skills: ['Flutter', 'Firebase', 'Figma', 'AI', 'HCI', 'Mobile & Web Dev'], lav: false, figma: true },
+  { id: 2, num: '03', title: 'Lattice', type: 'Hackathon · 25 hrs', desc: 'AI learning path generator with Firebase, MongoDB, Google ADK.', skills: ['Flutter', 'Firebase', 'MongoDB', 'Google ADK', 'Figma', 'AI', 'Mobile & Web Dev'], lav: true, figma: true },
+  { id: 3, num: '04', title: 'Roadrunner Connect', type: 'Mobile · Project Lead', desc: 'Campus engagement app for the University of Denver.', skills: ['Flutter', 'Firebase', 'MongoDB', 'Figma', 'Mobile & Web Dev', 'HCI', 'Project Management'], lav: true, figma: true },
 ];
 
 export const skills = [
-  { label: 'Accessibility', lav: false, fig: false }, { label: 'A11y / WCAG', lav: false, fig: false },
+  { label: 'Accessibility', lav: false, fig: false },
   { label: 'Flutter', lav: false, fig: false }, { label: 'Firebase', lav: false, fig: false },
   { label: 'Figma', lav: false, fig: true }, { label: 'HCI', lav: false, fig: false },
   { label: 'AI', lav: false, fig: false }, { label: 'LLM Evaluation', lav: true, fig: false },
-  { label: 'MongoDB', lav: false, fig: false }, { label: 'Mobile Dev', lav: false, fig: false },
+  { label: 'MongoDB', lav: false, fig: false }, { label: 'Mobile & Web Dev', lav: false, fig: false },
   { label: 'Research', lav: true, fig: false }, { label: 'Google ADK', lav: false, fig: false },
+  { label: 'Project Management', lav: false, fig: false },
 ];
 
 export const figmaData = [
