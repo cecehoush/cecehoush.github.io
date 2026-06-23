@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { skills, projects, figmaData } from '../data/portfolio.js';
+import { skills, projects } from '../data/portfolio.js';
 import styles from './MarqueeBar.module.css';
 
 const figmaPinkSvg = (
@@ -9,8 +9,11 @@ const figmaPinkSvg = (
   </svg>
 );
 
-function matchProjects(skillLabel, isFig) {
-  if (isFig) return figmaData;
+// Every skill drawer (including Figma) filters the main projects array by skill
+// label, so any project tagged with that skill — e.g. Align with 'Figma' — shows
+// up. figmaData is still used for SVG screen content, but no longer drives which
+// projects appear here.
+function matchProjects(skillLabel) {
   const key = skillLabel.replace(' / WCAG', '').replace('A11y', 'Accessibility');
   return projects.filter((p) =>
     p.skills.some(
@@ -39,7 +42,7 @@ export default function MarqueeBar({ onOpenFigma }) {
       skillLabel: sk.label,
       isFig: sk.fig,
       isLav: sk.lav,
-      matched: matchProjects(sk.label, sk.fig),
+      matched: matchProjects(sk.label),
     });
     setOpen(true);
   }

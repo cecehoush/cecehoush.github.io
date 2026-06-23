@@ -1,25 +1,35 @@
-import { useState } from 'react';
-import Nav from './components/Nav.jsx';
-import Hero from './components/Hero.jsx';
-import MarqueeBar from './components/MarqueeBar.jsx';
-import Projects from './components/Projects.jsx';
-import About from './components/About.jsx';
-import Footer from './components/Footer.jsx';
-import FigmaModal from './components/FigmaModal.jsx';
+import { useEffect } from 'react';
+import { Routes, Route, useLocation } from 'react-router-dom';
+import Home from './Home.jsx';
+import Portfolio from './components/Portfolio.jsx';
+
+// BrowserRouter doesn't scroll to hash targets on its own. On each route/hash
+// change: scroll to the #anchor if present, otherwise to the top of the page.
+function ScrollToHash() {
+  const { pathname, hash } = useLocation();
+  useEffect(() => {
+    if (hash) {
+      const id = hash.slice(1);
+      // Wait a frame so the destination route has committed before scrolling.
+      requestAnimationFrame(() => {
+        const el = document.getElementById(id);
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      });
+    } else {
+      window.scrollTo(0, 0);
+    }
+  }, [pathname, hash]);
+  return null;
+}
 
 export default function App() {
-  // The Figma modal is opened from the Figma skill drawer (in MarqueeBar).
-  const [figmaProject, setFigmaProject] = useState(null);
-
   return (
     <>
-      <Nav />
-      <Hero />
-      <MarqueeBar onOpenFigma={setFigmaProject} />
-      <Projects />
-      <About />
-      <Footer />
-      <FigmaModal project={figmaProject} onClose={() => setFigmaProject(null)} />
+      <ScrollToHash />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/portfolio" element={<Portfolio />} />
+      </Routes>
     </>
   );
 }

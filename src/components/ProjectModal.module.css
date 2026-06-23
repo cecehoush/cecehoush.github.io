@@ -29,7 +29,7 @@
   background: #0E1420;
   border: 1px solid rgba(255, 157, 77, 0.28);
   border-radius: 18px;
-  width: min(94vw, 840px);
+  width: min(96vw, 1120px);
   max-height: 88vh;
   overflow: hidden;
   transform: translateY(28px) scale(0.96);
@@ -88,12 +88,12 @@
 .body {
   padding: 2rem;
   display: flex;
-  gap: 2rem;
+  gap: 2.25rem;
   align-items: flex-start;
   overflow-y: auto;
   max-height: calc(88vh - 58px);
 }
-@media (max-width: 600px) {
+@media (max-width: 920px) {
   .body { flex-direction: column; }
 }
 .screens {
@@ -143,14 +143,14 @@
   margin: 8px auto 0;
 }
 .info {
-  width: 210px;
+  width: 290px;
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
   gap: 1rem;
   padding-top: 0.3rem;
 }
-@media (max-width: 600px) {
+@media (max-width: 920px) {
   .info { width: 100%; }
 }
 .infoTitle {
@@ -192,4 +192,184 @@
   font-style: italic;
   line-height: 1.5;
   margin-top: 0.2rem;
+}
+
+/* ── NON-FIGMA (plain) VARIANT — blue accent instead of warm orange ── */
+.panel.plain {
+  border-color: rgba(106, 174, 224, 0.28);
+  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(106, 174, 224, 0.1);
+}
+.panel.plain .topbar {
+  border-bottom-color: rgba(106, 174, 224, 0.14);
+}
+.badge.plain {
+  color: var(--blue);
+  background: rgba(106, 174, 224, 0.1);
+  border-color: rgba(106, 174, 224, 0.24);
+}
+.infoType.plain {
+  color: var(--blue);
+}
+.tag.plain {
+  background: rgba(106, 174, 224, 0.08);
+  color: #9DC6EA;
+  border-color: rgba(106, 174, 224, 0.18);
+}
+/* When there's no media (no Figma screens, no images) the info panel is full width. */
+.info.infoWide {
+  width: 100%;
+}
+
+/* Image media for non-Figma projects that have screenshots. */
+.images {
+  display: flex;
+  gap: 1rem;
+  flex: 1;
+  overflow-x: auto;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0 0.15rem 0.25rem;
+  scroll-padding-left: 0.15rem;
+}
+.image {
+  border-radius: 10px;
+  border: 0.5px solid rgba(255, 255, 255, 0.08);
+  max-height: 320px;
+  width: auto;
+  flex-shrink: 0;
+}
+/* Grouped screenshots (e.g. mobile / desktop) — each group is a labeled,
+   horizontally scrollable row at a consistent height. */
+.imageGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.groupLabel {
+  font-size: 0.58rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(232, 240, 252, 0.45);
+}
+.imageRow {
+  display: flex;
+  gap: 0.75rem;
+  overflow-x: auto;
+  padding-bottom: 0.25rem;
+}
+.imageCover {
+  height: 240px;
+  width: auto;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 0.5px solid rgba(255, 255, 255, 0.08);
+  flex-shrink: 0;
+}
+.mediaCol {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  flex: 1;
+  min-width: 0;
+}
+.embedWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+}
+.phoneFrame {
+  width: min(290px, 100%);
+  background: #0A0E1A;
+  border: 2px solid rgba(255, 255, 255, 0.11);
+  border-radius: 28px;
+  padding: 12px 10px;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+.embedScreen {
+  border-radius: 18px;
+  overflow: hidden;
+  background: #070A12;
+  aspect-ratio: 9 / 19.5;
+}
+.embedFrame {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+  background: #070A12;
+}
+
+/* Links row (website / GitHub / LinkedIn). */
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.linkBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.66rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: rgba(232, 240, 252, 0.78);
+  background: rgba(255, 255, 255, 0.04);
+  border: 0.5px solid rgba(255, 255, 255, 0.14);
+  border-radius: 6px;
+  padding: 0.34rem 0.7rem;
+  text-decoration: none;
+  transition: all 0.18s;
+}
+.linkBtn:hover {
+  color: #fff;
+  border-color: rgba(106, 174, 224, 0.5);
+  background: rgba(106, 174, 224, 0.08);
+}
+
+@media (max-width: 920px) {
+  .panel {
+    width: min(96vw, 760px);
+  }
+  .body {
+    padding: 1.4rem;
+    gap: 1.5rem;
+  }
+  .mediaCol,
+  .images {
+    width: 100%;
+  }
+  .images {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 600px) {
+  .panel {
+    width: min(98vw, 560px);
+    max-height: 92vh;
+    border-radius: 16px;
+  }
+  .topbar {
+    padding: 0.9rem 1rem;
+  }
+  .body {
+    padding: 1rem;
+    gap: 1.1rem;
+    max-height: calc(92vh - 56px);
+  }
+  .phoneFrame {
+    width: min(100%, 280px);
+    border-radius: 24px;
+  }
+  .embedScreen {
+    border-radius: 16px;
+  }
+  .image {
+    max-height: 240px;
+  }
+  .infoDesc {
+    font-size: 0.75rem;
+    line-height: 1.58;
+  }
 }
