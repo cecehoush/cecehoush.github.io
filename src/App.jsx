@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import Home from './Home.jsx';
 import Portfolio from './components/Portfolio.jsx';
+import Contact from './components/Contact.jsx';
 
 // BrowserRouter doesn't scroll to hash targets on its own. On each route/hash
 // change: scroll to the #anchor if present, otherwise to the top of the page.
@@ -29,6 +30,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/portfolio" element={<Portfolio />} />
+        <Route path="/contact" element={<Contact />} />
       </Routes>
     </>
   );

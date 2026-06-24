@@ -1,5 +1,18 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
+/* Disable text selection and image/element dragging site-wide (covers text,
+   emojis, icons, the particle canvas, etc.). */
+* {
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+/* Re-enable selection only where users actually type/edit. */
+input, textarea, [contenteditable] {
+  -webkit-user-select: text;
+  user-select: text;
+}
+
 :root {
   --bg: #070A12;
   --surface: #0D1525;
@@ -55,7 +68,7 @@
   --bg: #EEF4FB;
   --surface: #E2EBF6;
   --card-bg: #D8E6F5;
-  --text: #0D1A2E;
+  --text: #0A1426;
   --muted: rgba(13, 26, 46, 0.68);
   --rule: rgba(13, 26, 46, 0.20);
   --heading: #0D1A2E;
@@ -160,4 +173,17 @@ body {
 }
 @media (max-width: 480px) {
   :root { --page-pad: 1.1rem; }
+}
+
+/* Visually hidden but available to screen readers. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
