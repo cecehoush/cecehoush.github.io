@@ -15,9 +15,17 @@ export const figmaImageManifest = {
   ],
   "lattice": [],
   "lucent": [],
-  "roadrunner_connect": {
-    "1-mobile": [],
-    "2-desktop": []
-  },
+  "roadrunner_connect": [
+    "figma/roadrunner_connect/community_hour_1_audience.jpg",
+    "figma/roadrunner_connect/community_hour_cece_and_kade.jpg",
+    "figma/roadrunner_connect/cs_advisory_board_meeting.jpg",
+    "figma/roadrunner_connect/cs_community_hour_2_flyer.png",
+    "figma/roadrunner_connect/cs_community_hour_flyer.png",
+    "figma/roadrunner_connect/rewards_tree.png",
+    "figma/roadrunner_connect/team_with_cookies.jpg",
+    "figma/roadrunner_connect/team_with_rowdy.jpg",
+    "figma/roadrunner_connect/urc_poster_with_devices.jpg",
+    "figma/roadrunner_connect/urc_team.jpg"
+  ],
   "spiderbyte": []
 };

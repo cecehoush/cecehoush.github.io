@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { figmaData, getProjectImages } from '../data/portfolio.js';
+import { getProjectImages } from '../data/portfolio.js';
 import styles from './ProjectModal.module.css';
 
 const figmaBadgeIcon = (
@@ -23,12 +23,26 @@ function getFigmaEmbedUrl(url) {
   return `https://www.figma.com/embed?embed_host=share&url=${encodeURIComponent(url)}`;
 }
 
+// Render a longDesc as paragraphs (split on blank lines). If the final paragraph
+// is wrapped in *asterisks*, render it italicized and dimmed as a footer note.
+function renderDescription(text) {
+  const paras = text.split('\n\n').map((p) => p.trim()).filter(Boolean);
+  return paras.map((para, i) => {
+    const isNote = i === paras.length - 1 && para.length > 1 && para.startsWith('*') && para.endsWith('*');
+    return isNote ? (
+      <em key={i} className={styles.descNote}>{para.slice(1, -1).trim()}</em>
+    ) : (
+      <p key={i} className={styles.descPara}>{para}</p>
+    );
+  });
+}
+
 // General-purpose project modal. The `figma: true` flag on the project data is
 // the authoritative switch for the warm Figma panel treatment ("Figma Design"
-// badge, orange accents). Figma media comes from SVG screens (figmaData, matched
-// by title) and/or an interactive prototype iframe (links.figma). Screenshot
-// galleries come from the generated manifest via getProjectImages (a flat array,
-// or a { group: [...] } object rendered as labeled rows).
+// badge, orange accents). Figma media comes from an interactive prototype iframe
+// (links.figma). Screenshot galleries come from the generated manifest via
+// getProjectImages (a flat array, or a { group: [...] } object rendered as
+// labeled rows). Text-heavy projects with images use a stacked layout.
 export default function ProjectModal({ project, onClose }) {
   // Keep the last project mounted so content stays visible while fading out.
   const [current, setCurrent] = useState(null);
@@ -56,11 +70,6 @@ export default function ProjectModal({ project, onClose }) {
   const links = current?.links || {};
   const linkEntries = Object.entries(links).filter(([, v]) => v);
 
-  // SVG phone screens (Lucent/Lattice/Roadrunner) — looked up by title; figmaData
-  // entries passed straight from the home drawer already carry their own screens.
-  const screens = current?.screens
-    || (isFigma ? figmaData.find((f) => f.title === current?.title)?.screens : null)
-    || [];
   const figmaEmbedUrl = getFigmaEmbedUrl(links.figma);
 
   // Manifest images: flat array or grouped object.
@@ -70,7 +79,12 @@ export default function ProjectModal({ project, onClose }) {
   const groupRows = grouped ? Object.entries(grouped).filter(([, imgs]) => imgs.length > 0) : [];
   const hasImages = grouped ? groupRows.length > 0 : flatImages.length > 0;
 
-  const hasMedia = screens.length > 0 || !!figmaEmbedUrl || hasImages;
+  const hasMedia = !!figmaEmbedUrl || hasImages;
+
+  // Long descriptions next to a short image column leave big empty gaps in the
+  // side-by-side layout. For text-heavy projects that also have images, stack the
+  // full-width description on top and scroll the images in a row below.
+  const stacked = description.length > 600 && hasImages;
 
   return (
     <div className={`${styles.modal} ${open ? styles.open : ''}`}>
@@ -87,29 +101,11 @@ export default function ProjectModal({ project, onClose }) {
           </div>
           <button className={styles.close} onClick={onClose} aria-label="Close">✕</button>
         </div>
-        <div className={styles.body}>
+        <div className={`${styles.body} ${stacked ? styles.stacked : ''}`}>
           {current && (
             <>
               {hasMedia && (
                 <div className={styles.mediaCol}>
-                  {screens.length > 0 && (
-                    <div className={styles.screens}>
-                      {screens.map((s, i) => (
-                        <div
-                          className={styles.phoneWrap}
-                          key={i}
-                          style={{ transform: i === 0 ? 'scale(1)' : 'scale(0.88)' }}
-                        >
-                          <div className={styles.phone} style={{ opacity: i === 0 ? 1 : 0.72 }}>
-                            <div className={styles.phoneNotch}></div>
-                            <div className={styles.phoneScreen} dangerouslySetInnerHTML={{ __html: s.svg }}></div>
-                            <div className={styles.phoneHome}></div>
-                          </div>
-                          <div className={styles.phoneLbl}>{s.label}</div>
-                        </div>
-                      ))}
-                    </div>
-                  )}
                   {figmaEmbedUrl && (
                     <div className={styles.embedWrap}>
                       {/* TODO before deploy: confirm Figma prototype is shared as "anyone with the link can view" or iframe will show login wall */}
@@ -169,7 +165,7 @@ export default function ProjectModal({ project, onClose }) {
                   <div className={styles.infoTitle}>{current.title}</div>
                   <div className={`${styles.infoType} ${isFigma ? '' : styles.plain}`}>{current.type}</div>
                 </div>
-                <div className={styles.infoDesc}>{description}</div>
+                <div className={styles.infoDesc}>{renderDescription(description)}</div>
                 {pills.length > 0 && (
                   <div className={styles.tags}>
                     {pills.map((t, i) => (
@@ -184,16 +180,6 @@ export default function ProjectModal({ project, onClose }) {
                         {LINK_LABELS[key] || key} ↗
                       </a>
                     ))}
-                  </div>
-                )}
-                {figmaEmbedUrl && (
-                  <div className={styles.note}>
-                    ↑ Interactive Figma embed inside the site. If the prototype ever fails to load, the Figma link above is the fallback.
-                  </div>
-                )}
-                {screens.length > 0 && (
-                  <div className={styles.note}>
-                    ↑ Illustrated mockups representing Figma designs. Swap in real exported frames or Figma embeds when building.
                   </div>
                 )}
               </div>

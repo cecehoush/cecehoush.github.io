@@ -96,18 +96,19 @@
 @media (max-width: 920px) {
   .body { flex-direction: column; }
 }
-.screens {
-  display: flex;
-  gap: 1.2rem;
-  align-items: flex-end;
-  flex: 1;
-  justify-content: center;
-}
-.phoneWrap {
-  display: flex;
+/* Stacked layout for text-heavy projects that also have images: full-width
+   description on top, images scrolling in a row below. Avoids the big empty gaps
+   that appear when a long description sits beside a short image column. */
+.body.stacked {
   flex-direction: column;
-  align-items: center;
-  gap: 0.6rem;
+}
+.body.stacked .info {
+  width: 100%;
+  order: 1;
+}
+.body.stacked .mediaCol {
+  width: 100%;
+  order: 2;
 }
 .phoneLbl {
   font-size: 0.6rem;
@@ -115,25 +116,12 @@
   text-transform: uppercase;
   color: rgba(232, 240, 252, 0.62);
 }
-.phone {
-  width: 132px;
-  background: #0A0E1A;
-  border: 2px solid rgba(255, 255, 255, 0.11);
-  border-radius: 22px;
-  padding: 10px 8px;
-  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.05);
-}
 .phoneNotch {
   width: 40px;
   height: 6px;
   background: rgba(255, 255, 255, 0.11);
   border-radius: 3px;
   margin: 0 auto 8px;
-}
-.phoneScreen {
-  border-radius: 12px;
-  overflow: hidden;
-  background: #070A12;
 }
 .phoneHome {
   width: 24px;
@@ -172,6 +160,20 @@
   line-height: 1.68;
   color: rgba(232, 240, 252, 0.68);
   font-weight: 300;
+  text-align: left;
+}
+.descPara {
+  margin: 0 0 0.7rem;
+}
+.descPara:last-child {
+  margin-bottom: 0;
+}
+/* Final *asterisk-wrapped* paragraph rendered as a dimmed footer note. */
+.descNote {
+  display: block;
+  margin-top: 0.7rem;
+  font-style: italic;
+  opacity: 0.65;
 }
 .tags {
   display: flex;
@@ -186,14 +188,6 @@
   color: #C4824C;
   border: 0.5px solid rgba(255, 157, 77, 0.16);
 }
-.note {
-  font-size: 0.68rem;
-  color: rgba(232, 240, 252, 0.2);
-  font-style: italic;
-  line-height: 1.5;
-  margin-top: 0.2rem;
-}
-
 /* ── NON-FIGMA (plain) VARIANT — blue accent instead of warm orange ── */
 .panel.plain {
   border-color: rgba(106, 174, 224, 0.28);

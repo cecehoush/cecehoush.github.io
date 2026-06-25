@@ -2,7 +2,7 @@ import { useState, useEffect, useMemo } from 'react';
 import Nav from './Nav.jsx';
 import Footer from './Footer.jsx';
 import ProjectModal from './ProjectModal.jsx';
-import { projects, workExperience, education, certifications, figmaData, getProjectImages } from '../data/portfolio.js';
+import { projects, workExperience, education, certifications, getProjectImages } from '../data/portfolio.js';
 import styles from './Portfolio.module.css';
 
 const TABS = [
@@ -39,14 +39,6 @@ function getPreviewImages(project) {
     return Object.values(data).filter((arr) => arr.length > 0).slice(0, 2).map((arr) => arr[0]);
   }
   return [];
-}
-
-// Figma phone-mockup screens live in figmaData; attach them by title so the
-// modal can show them for Figma projects opened from the portfolio.
-function withScreens(project) {
-  if (!project) return null;
-  const fig = figmaData.find((f) => f.title === project.title);
-  return fig ? { ...project, screens: fig.screens } : project;
 }
 
 function TimelineEntry({ open, onToggle, expandable, header, children }) {
@@ -192,7 +184,7 @@ export default function Portfolio() {
                       <button
                         type="button"
                         className={styles.detailBtn}
-                        onClick={() => setModalProject(withScreens(selected))}
+                        onClick={() => setModalProject(selected)}
                       >
                         Open full detail ↗
                       </button>
