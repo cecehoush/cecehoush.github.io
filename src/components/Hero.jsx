@@ -156,14 +156,14 @@ export default function Hero() {
     <section className={styles.hero} id="hero" ref={heroRef}>
       <canvas className={styles.canvas} ref={canvasRef}></canvas>
       <div className={styles.inner}>
-        <div className={styles.eyebrow}>HCI Researcher · University of Denver · 2025</div>
+        <div className={styles.eyebrow}>Developer · Researcher · Denver, CO</div>
         <div className={styles.heading}>
           <div className={styles.pre}>building for</div>
           <h1 className={styles.main}>
             <span className={styles.outlined}>{word}</span><span className={styles.heroDot}>.</span>
           </h1>
         </div>
-        <div className={styles.sub}>First-year CS PhD student designing AI interfaces that work for those who need them most.</div>
+        <div className={styles.sub}>Advocating for the ones most software forgets.</div>
       </div>
     </section>
   );
