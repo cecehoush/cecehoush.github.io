@@ -91,7 +91,7 @@ export default function Nav() {
       </a>
       <div className={styles.right}>
         <div className={styles.links}>
-          <Link to="/portfolio" data-text="Projects"><span className={styles.linkLabel}>Projects</span></Link>
+          <Link to="/portfolio" data-text="Portfolio"><span className={styles.linkLabel}>Portfolio</span></Link>
           <a href="#about" data-text="About" onClick={(e) => goToHashSection(e, 'about')}><span className={styles.linkLabel}>About</span></a>
           <Link to="/contact" data-text="Contact"><span className={styles.linkLabel}>Contact</span></Link>
         </div>
@@ -110,7 +110,7 @@ export default function Nav() {
             <span></span>
           </button>
           <div className={`${styles.menuPanel} ${menuOpen ? styles.menuPanelOpen : ''}`} id="nav-menu">
-            <Link className={styles.menuLink} to="/portfolio" onClick={closeMenu}>Projects</Link>
+            <Link className={styles.menuLink} to="/portfolio" onClick={closeMenu}>Portfolio</Link>
             <a className={styles.menuLink} href="#about" onClick={(e) => goToHashSection(e, 'about')}>About</a>
             <Link className={styles.menuLink} to="/contact" onClick={closeMenu}>Contact</Link>
             <div className={styles.menuDivider}></div>

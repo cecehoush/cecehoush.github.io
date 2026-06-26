@@ -134,7 +134,7 @@ export const workExperience = [
     org: 'Colorado Sustainability Hub · University of Denver',
     location: 'Denver, CO',
     bullets: [
-      'Contributing to the NSF-funded Sustainability Hub, an interdisciplinary initiative advancing sustainable data access, visualization, and inclusive AI interaction design.',
+      'Returned to the same NSF-funded Sustainability Hub project through the University of Denver after starting graduate school there — an interdisciplinary initiative advancing sustainable data access, visualization, and inclusive AI interaction design.',
       'Designing UI/UX systems, visual assets, and chatbot interaction models in Figma to boost public engagement and data understanding.',
       'Co-authoring a survey paper on LLM evaluation benchmarks and conducting independent research on accessible, inclusive LLM interfaces across technical and non-technical users.',
       'Developing machine-learning models to surface sustainability data patterns, collaborating with 10+ researchers in an Agile environment.',
@@ -149,7 +149,7 @@ export const workExperience = [
     org: 'MSU Denver',
     location: 'Denver, CO',
     bullets: [
-      'Led "Roadrunner Connect," a campus engagement mobile app, as Project Lead and Scrum Master — steering a team of 5 through two-week Agile sprints with task tracking via ZenHub, daily standups, and team OKRs.',
+      'Joined as a summer intern on a five-person team building "Roadrunner Connect," a campus engagement mobile app, and was one of two interns selected to continue full-time after the internship concluded — stepping into the Project Lead and Scrum Master role and driving two-week Agile sprints with task tracking via ZenHub, daily standups, and team OKRs.',
       'Pitched the design concept that stakeholders selected as the base design the team built the app from.',
       'Built the Flutter (Dart) mobile frontend and React website, owning UI/UX design in Figma from concept to launch.',
       'Developed the Node.js/Express and MongoDB backend on AWS, indexing queries to optimize API performance.',
@@ -185,10 +185,8 @@ export const workExperience = [
     title: 'Undergraduate Research Assistant',
     org: 'Colorado Sustainability Hub · MSU Denver',
     location: 'Denver, CO',
-    // FLAG: the resume lists the Sustainability Hub bullets once across both the GRA and URA
-    // roles; the role-specific split is approximate — review.
     bullets: [
-      'Earlier research role at the Sustainability Hub (later continued as a Graduate Research Assistant), contributing to inclusive AI interaction design and sustainability data work.',
+      'Earlier research role at the NSF-funded Sustainability Hub, contributing to inclusive AI interaction design and sustainability data work; concluded when I transitioned to the Roadrunner Connect project.',
     ],
     skills: ['Research', 'AI'],
     links: { website: 'https://sustainabilityhub.co' },

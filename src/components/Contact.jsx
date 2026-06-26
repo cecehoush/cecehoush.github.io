@@ -1,12 +1,13 @@
 import { useState, useEffect, useRef } from 'react';
+import emailjs from '@emailjs/browser';
 import Nav from './Nav.jsx';
 import Footer from './Footer.jsx';
 import BubbleField from './BubbleField.jsx';
 import styles from './Contact.module.css';
 
-// TODO: replace with real Formspree form ID before deploy
-const FORMSPREE_ID = 'YOUR_FORMSPREE_ID';
-const FORMSPREE_URL = `https://formspree.io/f/${FORMSPREE_ID}`;
+const EMAILJS_SERVICE_ID = 'service_vvpir7f';
+const EMAILJS_TEMPLATE_ID = 'template_g5g8xqc';
+const EMAILJS_PUBLIC_KEY = 'MLNR7yuIGbcQuyQ1f';
 
 const LINKS = {
   linkedin: 'https://www.linkedin.com/in/cecehoush',
@@ -22,7 +23,7 @@ export default function Contact() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
-  const [status, setStatus] = useState(''); // '' | 'sending' | 'success' | 'error'
+  const [status, setStatus] = useState(''); // '' | 'sending' | 'success' | 'error' | 'limit'
 
   const termNameRef = useRef(null);
   const simpleNameRef = useRef(null);
@@ -46,19 +47,25 @@ export default function Contact() {
     if (sending) return;
     setStatus('sending');
     try {
-      const res = await fetch(FORMSPREE_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({ name, email, message }),
-      });
-      setStatus(res.ok ? 'success' : 'error');
-    } catch {
-      setStatus('error');
+      // Template params must match the EmailJS template's variable names.
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        { from_name: name, from_email: email, message },
+        { publicKey: EMAILJS_PUBLIC_KEY },
+      );
+      setStatus('success');
+    } catch (err) {
+      // EmailJS rejects with { status, text }; treat 429 / "limit" as quota exhaustion.
+      const text = (err?.text || err?.message || '').toLowerCase();
+      setStatus(err?.status === 429 || text.includes('limit') ? 'limit' : 'error');
     }
   }
 
   const statusEl = status === 'success' ? (
     <span className={`${styles.status} ${styles.statusOk}`} role="status">message sent ✦</span>
+  ) : status === 'limit' ? (
+    <span className={`${styles.status} ${styles.statusErr}`} role="status">monthly limit reached — email me directly at cecehoush@gmail.com</span>
   ) : status === 'error' ? (
     <span className={`${styles.status} ${styles.statusErr}`} role="status">something went wrong — try emailing directly</span>
   ) : null;
