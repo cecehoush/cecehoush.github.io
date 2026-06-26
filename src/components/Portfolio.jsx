@@ -303,13 +303,6 @@ export default function Portfolio() {
                   <span className={styles.certMeta}>{c.issuer} · {c.date}</span>
                 </li>
               ))}
-              {/* GHOST placeholder — REMOVE before deployment. Hidden while searching. */}
-              {!q && (
-                <li className={`${styles.certItem} ${styles.certGhost}`} aria-hidden="true">
-                  <span className={styles.certName}>More to come…</span>
-                  <span className={styles.certMeta}>placeholder</span>
-                </li>
-              )}
             </ul>
           )}
         </div>
