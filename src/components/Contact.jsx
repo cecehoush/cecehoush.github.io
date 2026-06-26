@@ -18,16 +18,56 @@ const LINKS = {
 
 const MAX = 500;
 
+// Client-side anti-spam cooldown: block resends within 60s of a successful send.
+const COOLDOWN_MS = 60000;
+const COOLDOWN_KEY = 'cecehoush_contact_last_sent';
+
+function readLastSent() {
+  try { return Number(localStorage.getItem(COOLDOWN_KEY)) || 0; } catch { return 0; }
+}
+function writeLastSent(ts) {
+  try { localStorage.setItem(COOLDOWN_KEY, String(ts)); } catch { /* private mode, etc. */ }
+}
+
 export default function Contact() {
   const [mode, setMode] = useState('terminal'); // 'terminal' | 'simple'
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
   const [status, setStatus] = useState(''); // '' | 'sending' | 'success' | 'error' | 'limit'
+  const [cooldownUntil, setCooldownUntil] = useState(0); // timestamp the cooldown ends
+  const [now, setNow] = useState(() => Date.now());
 
   const termNameRef = useRef(null);
   const simpleNameRef = useRef(null);
   const firstRender = useRef(true);
+
+  // Restore an in-progress cooldown on load, then auto-clear it once it elapses.
+  useEffect(() => {
+    const until = readLastSent() + COOLDOWN_MS;
+    if (until > Date.now()) setCooldownUntil(until);
+  }, []);
+  useEffect(() => {
+    if (!cooldownUntil) return undefined;
+    const remaining = cooldownUntil - Date.now();
+    if (remaining <= 0) { setCooldownUntil(0); return undefined; }
+    const t = setTimeout(() => setCooldownUntil(0), remaining);
+    return () => clearTimeout(t);
+  }, [cooldownUntil]);
+
+  useEffect(() => {
+    if (!cooldownUntil) return undefined;
+    setNow(Date.now());
+    const t = setInterval(() => setNow(Date.now()), 1000);
+    return () => clearInterval(t);
+  }, [cooldownUntil]);
+
+  const coolingDown = cooldownUntil > Date.now();
+  const cooldownRemainingMs = coolingDown ? cooldownUntil - now : 0;
+  const cooldownRemainingSeconds = Math.max(1, Math.ceil(cooldownRemainingMs / 1000));
+  const cooldownProgress = coolingDown
+    ? Math.max(0, Math.min(100, ((COOLDOWN_MS - cooldownRemainingMs) / COOLDOWN_MS) * 100))
+    : 0;
 
   // Move focus to the first field of whichever mode we switch into (but not on
   // initial mount, so we don't steal focus on page load).
@@ -45,6 +85,9 @@ export default function Contact() {
   async function handleSubmit(e) {
     e.preventDefault();
     if (sending) return;
+    // Re-check storage so a still-active cooldown blocks the send (and refreshes UI).
+    const until = readLastSent() + COOLDOWN_MS;
+    if (until > Date.now()) { setCooldownUntil(until); return; }
     setStatus('sending');
     try {
       // Template params must match the EmailJS template's variable names.
@@ -54,6 +97,9 @@ export default function Contact() {
         { from_name: name, from_email: email, message },
         { publicKey: EMAILJS_PUBLIC_KEY },
       );
+      const now = Date.now();
+      writeLastSent(now);
+      setCooldownUntil(now + COOLDOWN_MS);
       setStatus('success');
     } catch (err) {
       // EmailJS rejects with { status, text }; treat 429 / "limit" as quota exhaustion.
@@ -63,15 +109,38 @@ export default function Contact() {
   }
 
   const statusEl = status === 'success' ? (
-    <span className={`${styles.status} ${styles.statusOk}`} role="status">message sent ✦</span>
+    <span
+      className={`${styles.status} ${mode === 'terminal' ? styles.statusTerminalOk : styles.statusSimpleOk}`}
+      role="status"
+    >
+      message sent ✦
+    </span>
   ) : status === 'limit' ? (
     <span className={`${styles.status} ${styles.statusErr}`} role="status">monthly limit reached — email me directly at cecehoush@gmail.com</span>
   ) : status === 'error' ? (
     <span className={`${styles.status} ${styles.statusErr}`} role="status">something went wrong — try emailing directly</span>
   ) : null;
 
+  const cooldownEl = coolingDown ? (
+    <span
+      className={`${styles.cooldown} ${mode === 'terminal' ? styles.cooldownTerminal : styles.cooldownSimple}`}
+      role="status"
+      aria-live="polite"
+    >
+      <span className={styles.cooldownLabel}>cooldown</span>
+      <span className={styles.cooldownTime}>{cooldownRemainingSeconds}s</span>
+      <span className={styles.cooldownTrack} aria-hidden="true">
+        <span className={styles.cooldownFill} style={{ width: `${cooldownProgress}%` }}></span>
+      </span>
+    </span>
+  ) : null;
+
   const sendButton = (
-    <button type="submit" className={styles.send} disabled={sending}>
+    <button
+      type="submit"
+      className={`${styles.send} ${mode === 'terminal' ? styles.sendTerminal : styles.sendSimple}`}
+      disabled={sending || coolingDown}
+    >
       send <span className={styles.sendArrow} aria-hidden="true">→</span>
       <span className={styles.cursor} aria-hidden="true"></span>
     </button>
@@ -168,6 +237,7 @@ export default function Contact() {
                   <div className={styles.sendRow}>
                     {sendButton}
                     {statusEl}
+                    {cooldownEl}
                   </div>
                 </>
               )}
@@ -231,6 +301,7 @@ export default function Contact() {
                   <div className={styles.sendRow}>
                     {sendButton}
                     {statusEl}
+                    {cooldownEl}
                   </div>
                 </form>
               </div>
