@@ -34,10 +34,17 @@
 }
 
 /* ── TABS (horizontally scrollable on mobile) ── */
+/* Tabs on the left, global search on the right, sharing one row + divider. */
+.tabBar {
+  display: flex;
+  align-items: flex-end;
+  gap: 1rem;
+  flex-wrap: wrap;
+  border-bottom: 0.5px solid var(--rule);
+}
 .tabs {
   display: flex;
   gap: 1.6rem;
-  border-bottom: 0.5px solid var(--rule);
   overflow-x: auto;
   scrollbar-width: none;
 }
@@ -66,18 +73,19 @@
   padding-top: 2rem;
 }
 
-/* ── SEARCH ── */
+/* ── GLOBAL SEARCH (compact, shares the tab row) ── */
 .search {
-  width: 100%;
-  max-width: 360px;
+  margin-left: auto;          /* push to the right edge of the tab row */
+  margin-bottom: 0.4rem;      /* float just above the divider line */
+  width: 200px;
+  max-width: 100%;
   font-family: 'DM Sans', sans-serif;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   color: var(--text);
   background: var(--surface2);
   border: 0.5px solid var(--card-border);
   border-radius: 8px;
-  padding: 0.6rem 0.85rem;
-  margin-bottom: 1.5rem;
+  padding: 0.4rem 0.7rem;
   transition: border-color 0.2s, box-shadow 0.2s;
 }
 .search::placeholder { color: var(--muted); }
@@ -92,6 +100,17 @@
   font-style: italic;
   padding: 1rem 0;
 }
+/* Inline "try the X tab" link inside the no-results hint. */
+.hintLink {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  color: var(--blue);
+  cursor: pointer;
+  text-decoration: underline;
+}
+.hintLink:hover { color: var(--text); }
 
 /* ── SPOTLIGHT (list + preview) ── */
 .spotlight {
@@ -436,6 +455,13 @@
   .spotlight { grid-template-columns: 1fr; }
   .preview { position: static; }
   .backTop { bottom: 1rem; right: 1rem; }
+  /* Search drops below the tab bar at full width. */
+  .search {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 0.6rem;
+    margin-bottom: 0.6rem;
+  }
 }
 @media (max-width: 480px) {
   .intro { font-size: 1.2rem; }

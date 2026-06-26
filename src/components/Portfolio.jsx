@@ -18,6 +18,11 @@ function activeLinks(links) {
   return Object.entries(links || {}).filter(([, v]) => v);
 }
 
+// True if any of the given text parts contains the (already-lowercased) query.
+function matchesQuery(q, ...parts) {
+  return parts.filter(Boolean).join(' ').toLowerCase().includes(q);
+}
+
 function resolveImageSrc(src) {
   if (!src) return '';
   if (/^https?:\/\//.test(src) || src.startsWith('/')) return src;
@@ -77,17 +82,40 @@ export default function Portfolio() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  const filtered = useMemo(() => {
-    const q = query.trim().toLowerCase();
-    if (!q) return projects;
-    return projects.filter((p) =>
-      [p.title, p.shortDesc, p.type, ...(p.skills || [])].join(' ').toLowerCase().includes(q)
-    );
-  }, [query]);
+  // One global query filters every tab at once. Empty query → everything shows.
+  const q = query.trim().toLowerCase();
+
+  const filteredProjects = useMemo(
+    () => (q ? projects.filter((p) => matchesQuery(q, p.title, p.shortDesc, p.type, ...(p.skills || []))) : projects),
+    [q]
+  );
+  const filteredWork = useMemo(
+    () => (q ? workExperience.filter((w) => matchesQuery(q, w.title, w.org, w.location, ...(w.bullets || []), ...(w.skills || []))) : workExperience),
+    [q]
+  );
+  const filteredEdu = useMemo(
+    () => (q ? education.filter((ed) => matchesQuery(q, ed.degree, ed.field, ed.school, ed.note)) : education),
+    [q]
+  );
+  const filteredCerts = useMemo(
+    () => (q ? certifications.filter((c) => matchesQuery(q, c.name, c.issuer)) : certifications),
+    [q]
+  );
+
+  const counts = {
+    projects: filteredProjects.length,
+    work: filteredWork.length,
+    education: filteredEdu.length,
+    certs: filteredCerts.length,
+  };
+
+  // When searching and the active tab has nothing, point the user at a tab that does.
+  const activeEmpty = !!q && counts[activeTab] === 0;
+  const otherTab = activeEmpty ? TABS.find((t) => t.key !== activeTab && counts[t.key] > 0) : null;
 
   // Derived so the preview auto-follows the filter: the user's pick if it's
   // still in the list, otherwise the first result.
-  const selected = filtered.find((p) => p.id === selectedId) || filtered[0] || null;
+  const selected = filteredProjects.find((p) => p.id === selectedId) || filteredProjects[0] || null;
   const selectedImages = getPreviewImages(selected);
   const selectedLinks = selected ? activeLinks(selected.links) : [];
 
@@ -100,96 +128,108 @@ export default function Portfolio() {
           <p className={styles.intro}>Projects, experience, and the work behind them.</p>
         </header>
 
-        <div className={styles.tabs} role="tablist" aria-label="Portfolio sections">
-          {TABS.map((t) => (
-            <button
-              key={t.key}
-              type="button"
-              role="tab"
-              aria-selected={activeTab === t.key}
-              className={`${styles.tab} ${activeTab === t.key ? styles.tabActive : ''}`}
-              onClick={() => setActiveTab(t.key)}
-            >
-              {t.label}
-            </button>
-          ))}
+        <div className={styles.tabBar}>
+          <div className={styles.tabs} role="tablist" aria-label="Portfolio sections">
+            {TABS.map((t) => (
+              <button
+                key={t.key}
+                type="button"
+                role="tab"
+                aria-selected={activeTab === t.key}
+                className={`${styles.tab} ${activeTab === t.key ? styles.tabActive : ''}`}
+                onClick={() => setActiveTab(t.key)}
+              >
+                {t.label}
+              </button>
+            ))}
+          </div>
+          <input
+            type="search"
+            className={styles.search}
+            placeholder="Search everything..."
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            aria-label="Search all portfolio content"
+          />
         </div>
 
         <div className={styles.tabContent}>
-          {activeTab === 'projects' && (
-            <div>
-              <input
-                type="search"
-                className={styles.search}
-                placeholder="Search projects…"
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-                aria-label="Search projects"
-              />
-              {filtered.length === 0 ? (
-                <div className={styles.empty}>No projects match.</div>
+          {activeEmpty && (
+            <div className={styles.empty}>
+              {otherTab ? (
+                <>
+                  No results here — try the{' '}
+                  <button type="button" className={styles.hintLink} onClick={() => setActiveTab(otherTab.key)}>
+                    {otherTab.label}
+                  </button>{' '}
+                  tab
+                </>
               ) : (
-                <div className={styles.spotlight}>
-                  <ol className={styles.projList}>
-                    {filtered.map((p) => (
-                      <li key={p.id}>
-                        <button
-                          type="button"
-                          className={`${styles.projRow} ${selected?.id === p.id ? styles.projRowActive : ''}`}
-                          onClick={() => setSelectedId(p.id)}
-                        >
-                          <span className={styles.projNum}>{p.num}</span>
-                          <span className={styles.projRowMain}>
-                            <span className={styles.projRowTitle}>{p.title}</span>
-                            <span className={styles.projRowMeta}>{p.type}</span>
-                          </span>
-                          {p.badge && <span className={styles.badge}>{p.badge}</span>}
-                        </button>
-                      </li>
-                    ))}
-                  </ol>
+                'No results.'
+              )}
+            </div>
+          )}
 
-                  {selected && (
-                    <div className={styles.preview}>
-                      <div className={styles.previewTitle}>{selected.title}</div>
-                      {selectedImages.length > 0 && (
-                        <div className={styles.previewMedia}>
-                          {selectedImages.slice(0, 2).map((src, i) => (
-                            <img
-                              key={src}
-                              className={styles.previewImg}
-                              src={resolveImageSrc(src)}
-                              alt={`${selected.title} preview ${i + 1}`}
-                            />
-                          ))}
-                        </div>
-                      )}
-                      <p className={styles.previewDesc}>{selected.shortDesc}</p>
-                      {selected.skills?.length > 0 && (
-                        <div className={styles.tags}>
-                          {selected.skills.map((s) => (
-                            <span key={s} className={styles.tag}>{s}</span>
-                          ))}
-                        </div>
-                      )}
-                      {selectedLinks.length > 0 && (
-                        <div className={styles.linkRow}>
-                          {selectedLinks.map(([k, url]) => (
-                            <a key={k} className={styles.linkPill} href={url} target="_blank" rel="noopener noreferrer">
-                              {LINK_LABELS[k] || k} ↗
-                            </a>
-                          ))}
-                        </div>
-                      )}
-                      <button
-                        type="button"
-                        className={styles.detailBtn}
-                        onClick={() => setModalProject(selected)}
-                      >
-                        Open full detail ↗
-                      </button>
+          {activeTab === 'projects' && filteredProjects.length > 0 && (
+            <div className={styles.spotlight}>
+              <ol className={styles.projList}>
+                {filteredProjects.map((p) => (
+                  <li key={p.id}>
+                    <button
+                      type="button"
+                      className={`${styles.projRow} ${selected?.id === p.id ? styles.projRowActive : ''}`}
+                      onClick={() => setSelectedId(p.id)}
+                    >
+                      <span className={styles.projNum}>{p.num}</span>
+                      <span className={styles.projRowMain}>
+                        <span className={styles.projRowTitle}>{p.title}</span>
+                        <span className={styles.projRowMeta}>{p.type}</span>
+                      </span>
+                      {p.badge && <span className={styles.badge}>{p.badge}</span>}
+                    </button>
+                  </li>
+                ))}
+              </ol>
+
+              {selected && (
+                <div className={styles.preview}>
+                  <div className={styles.previewTitle}>{selected.title}</div>
+                  {selectedImages.length > 0 && (
+                    <div className={styles.previewMedia}>
+                      {selectedImages.slice(0, 2).map((src, i) => (
+                        <img
+                          key={src}
+                          className={styles.previewImg}
+                          src={resolveImageSrc(src)}
+                          alt={`${selected.title} preview ${i + 1}`}
+                        />
+                      ))}
                     </div>
                   )}
+                  <p className={styles.previewDesc}>{selected.shortDesc}</p>
+                  {selected.skills?.length > 0 && (
+                    <div className={styles.tags}>
+                      {selected.skills.map((s) => (
+                        <span key={s} className={styles.tag}>{s}</span>
+                      ))}
+                    </div>
+                  )}
+                  {selectedLinks.length > 0 && (
+                    <div className={styles.linkRow}>
+                      {selectedLinks.map(([k, url]) => (
+                        <a key={k} className={styles.linkPill} href={url} target="_blank" rel="noopener noreferrer">
+                          {LINK_LABELS[k] || k} ↗
+                        </a>
+                      ))}
+                    </div>
+                  )}
+                  <button
+                    type="button"
+                    className={styles.detailBtn}
+                    onClick={() => setModalProject(selected)}
+                  >
+                    Open full detail ↗
+                  </button>
                 </div>
               )}
             </div>
@@ -197,7 +237,7 @@ export default function Portfolio() {
 
           {activeTab === 'work' && (
             <div className={styles.timeline}>
-              {workExperience.map((w) => (
+              {filteredWork.map((w) => (
                 <TimelineEntry
                   key={w.id}
                   expandable
@@ -233,7 +273,7 @@ export default function Portfolio() {
 
           {activeTab === 'education' && (
             <div className={styles.timeline}>
-              {education.map((ed) => (
+              {filteredEdu.map((ed) => (
                 <TimelineEntry
                   key={ed.id}
                   expandable={!!ed.note}
@@ -257,17 +297,19 @@ export default function Portfolio() {
 
           {activeTab === 'certs' && (
             <ul className={styles.certList}>
-              {certifications.map((c) => (
+              {filteredCerts.map((c) => (
                 <li key={c.id} className={styles.certItem}>
                   <span className={styles.certName}>{c.name}</span>
                   <span className={styles.certMeta}>{c.issuer} · {c.date}</span>
                 </li>
               ))}
-              {/* GHOST placeholder — REMOVE before deployment. */}
-              <li className={`${styles.certItem} ${styles.certGhost}`} aria-hidden="true">
-                <span className={styles.certName}>More to come…</span>
-                <span className={styles.certMeta}>placeholder</span>
-              </li>
+              {/* GHOST placeholder — REMOVE before deployment. Hidden while searching. */}
+              {!q && (
+                <li className={`${styles.certItem} ${styles.certGhost}`} aria-hidden="true">
+                  <span className={styles.certName}>More to come…</span>
+                  <span className={styles.certMeta}>placeholder</span>
+                </li>
+              )}
             </ul>
           )}
         </div>
