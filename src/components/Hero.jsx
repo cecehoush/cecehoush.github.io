@@ -156,6 +156,9 @@ export default function Hero() {
     <section className={styles.hero} id="hero" ref={heroRef}>
       <canvas className={styles.canvas} ref={canvasRef}></canvas>
       <div className={styles.inner}>
+        <div className={styles.photo} aria-hidden="true">
+          <img className={styles.photoImg} src="/profile/CeceHoush.JPG" alt="" />
+        </div>
         <div className={styles.eyebrow}>Developer · Researcher · Denver, CO</div>
         <div className={styles.heading}>
           <div className={styles.pre}>building for</div>
