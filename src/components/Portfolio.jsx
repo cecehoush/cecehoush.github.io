@@ -184,6 +184,7 @@ export default function Portfolio() {
                       <span className={styles.projRowMain}>
                         <span className={styles.projRowTitle}>{p.title}</span>
                         <span className={styles.projRowMeta}>{p.type}</span>
+                        {p.dateRange && <span className={styles.projRowDate}>{p.dateRange}</span>}
                       </span>
                       {p.badge && <span className={styles.badge}>{p.badge}</span>}
                     </button>
@@ -194,6 +195,7 @@ export default function Portfolio() {
               {selected && (
                 <div className={styles.preview}>
                   <div className={styles.previewTitle}>{selected.title}</div>
+                  {selected.dateRange && <div className={styles.previewDate}>{selected.dateRange}</div>}
                   {selectedImages.length > 0 && (
                     <div className={styles.previewMedia}>
                       {selectedImages.slice(0, 2).map((src, i) => (

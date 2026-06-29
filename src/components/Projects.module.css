@@ -26,6 +26,24 @@
 @media (max-width: 600px) {
   .cardGrid { grid-template-columns: 1fr; }
 }
+.seeAllRow {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1.25rem;
+}
+.seeAll {
+  font-size: 0.78rem;
+  color: rgba(232, 240, 252, 0.55);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.seeAll:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+/* Home is theme-aware; keep the link legible on the light background too. */
+[data-theme="light"] .seeAll { color: rgba(13, 26, 46, 0.55); }
+[data-theme="light"] .seeAll:hover { color: #0D1A2E; }
 .card {
   padding: 1.6rem;
   background: var(--card-bg);
