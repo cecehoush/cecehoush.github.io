@@ -10,22 +10,10 @@ import { figmaImageManifest } from './generated/figmaManifest.js';
 // /portfolio page + ProjectModal. Omit link fields that don't apply.
 export const projects = [
   {
-    id: 'accessible-llm', num: '01', title: 'Accessible LLM Interfaces', type: 'Research · NSF',
-    desc: 'Evaluating LLM interfaces for underserved communities.',
-    shortDesc: 'NSF-funded research evaluating and designing LLM interfaces that work for underserved and non-technical users.',
-    // FLAG: longDesc drafted from the resume Sustainability Hub bullets — review wording.
-    longDesc: 'As a Graduate Research Assistant on the NSF-funded Colorado Sustainability Hub, I research accessible and inclusive LLM interfaces — improving usability across technical and non-technical users — and co-author a survey paper on LLM evaluation benchmarks. The work spans UI/UX design in Figma, chatbot interaction models, and machine-learning models that surface sustainability data patterns.',
-    skills: ['Accessibility', 'HCI', 'LLM Evaluation', 'AI', 'Research'],
-    links: { website: 'https://sustainabilityhub.co' },
-    badge: 'NSF',
-    lav: false, figma: false,
-  },
-  {
-    id: 'lucent', num: '02', title: 'Lucent', type: 'Hackathon · 1st place',
+    id: 'lucent', num: '01', title: 'Lucent', type: 'Hackathon · 1st place',
+    dateRange: 'Apr 2025',
     desc: 'AI mental wellness app — DU/MSU/CU Denver Hackathon winner.',
     shortDesc: 'AI-driven mental wellness app and 1st-place winner of the DU/MSU/UCD hackathon.',
-    // FLAG: resume lists FastAPI / Supabase / GPT-4.1, which aren't in the skills taxonomy
-    // (skill tags kept as the existing matched labels for MarqueeBar) — review.
     longDesc: 'Co-developed Lucent, an AI-driven mental wellness app that won 1st place at the DU/MSU/UCD hackathon. Built with Flutter, FastAPI, and Supabase (PostgreSQL), it uses GPT-4.1 for reflective chatbot interactions and features an interactive bonsai tree for daily emotional reflection and user retention. Designed end-to-end in Figma before development.',
     skills: ['Flutter', 'Firebase', 'Figma', 'AI', 'HCI', 'Mobile & Web Dev'],
     links: {},
@@ -33,17 +21,18 @@ export const projects = [
     lav: false, figma: true,
   },
   {
-    id: 'lattice', num: '03', title: 'Lattice', type: 'Hackathon · 25 hrs',
+    id: 'lattice', num: '02', title: 'Lattice', type: 'Hackathon · 25 hrs',
+    dateRange: 'Apr 2025',
     desc: 'AI learning path generator with Firebase, MongoDB, Google ADK.',
     shortDesc: 'AI learning-path generator built in ~25 hours with streak tracking and a grid-inspired UI.',
-    // FLAG: not on the resume yet — longDesc drafted from the site description; review.
     longDesc: 'Lattice is an AI learning-path generator built in roughly 25 hours, featuring a grid-inspired UI, an onboarding flow, and streak tracking. Built with Flutter, Firebase, MongoDB, and Google ADK, with the full experience mocked in Figma before development.',
     skills: ['Flutter', 'Firebase', 'MongoDB', 'Google ADK', 'Figma', 'AI', 'Mobile & Web Dev'],
-    links: {},
+    links: { github: 'https://github.com/cecehoush' },
     lav: true, figma: true,
   },
   {
-    id: 'roadrunner-connect', num: '04', title: 'Roadrunner Connect', type: 'Mobile · Project Lead',
+    id: 'roadrunner-connect', num: '03', title: 'Roadrunner Connect', type: 'Mobile · Project Lead',
+    dateRange: 'Jun 2024 – Jul 2025',
     desc: 'Campus engagement app for the University of Denver.',
     shortDesc: 'Full-stack campus engagement app built for and now owned by MSU Denver, combining interactive maps, gamified rewards, and social features. Led end-to-end as Project Lead and Scrum Master, from initial design through public App Store launch.',
     longDesc: `Roadrunner Connect is a student-built mobile app helping the MSU Denver and broader Denver community discover campus events, check in, earn rewards, and connect with each other. I joined as an intern and grew into the Project Lead and Scrum Master role, overseeing a team of 5 through two-week Agile sprints using ZenHub, daily standups, and OKR tracking. My design concept was selected by stakeholders as the base design the team built from.\n\nI led UI/UX in Figma and built the Flutter mobile frontend and React website, collaborating on the Node.js and MongoDB backend hosted on AWS. Integrations include Google Maps API, Firebase for authentication, Gravatar for team profiles, and a Python-based calendar parser pulling events from multiple MSU Denver and Auraria campus sources including Trumba and Roadrunner Link.\n\nKey features include event check-ins, photo and comment uploads, a feather-based rewards system with a confetti animation, leaderboards, giveaways, badges with earned animations, map and list and calendar views, a social friends system, and a comprehensive admin panel for managing users, events, and placemarks. The admin map tool lets administrators trace building outlines by physically walking the campus, encouraging community presence while keeping the map up to date as campus changes.\n\nI implemented light and dark mode with accessibility standards appropriate for a government-affiliated institution.\n\nI handled marketing through Canva including posters, flyers, and merch, documented progress in SharePoint and GitHub READMEs, and conducted beta launches and user testing sessions with iterative feedback cycles via Qualtrics. Getting approvals through school officials and stakeholders was a regular part of the process, covering branding guidelines, mascot use, and app store compliance. I coordinated a photoshoot with Rowdy, the school mascot, and designed the peeking Rowdy cutout used throughout the app.\n\nEvents presented at or tabled: women's volleyball and men's basketball booths with QR code advertising, Undergraduate Research Conference, Faculty Research Symposium, Presidents Cabinet, CS Advisory Board, CS Community Hours, and an OER Celebration.\n\n*The app is now officially owned by MSU Denver. Because of this, the GitHub repository and internal Figma designs are not publicly shareable, but the live app and its website are available below.*`,
@@ -58,19 +47,31 @@ export const projects = [
     lav: true, figma: false,
   },
   {
-    id: 'spiderbyte', num: '05', title: 'SpiderByte', type: 'Hackathon · 2nd place',
+    id: 'spiderbyte', num: '04', title: 'SpiderByte', type: 'Hackathon · 2nd place',
+    dateRange: 'Oct 2023',
     desc: 'Course-aligned coding-challenge website — MLH hackathon 2nd place.',
     shortDesc: 'Course-aligned coding-challenge website and 2nd-place winner of the MLH DU/MSU hackathon.',
     longDesc: 'Co-created SpiderByte, a course-aligned coding-challenge website, during a 28+ hour MLH hackathon — winning 2nd place among 6+ teams. Built with Python, Flask, SQLAlchemy, HTML/CSS, PythonTutor, and CodeMirror.',
-    // FLAG: stack (Python/Flask/SQLAlchemy) isn't in the skills taxonomy; tagged 'Mobile & Web Dev' only.
     // Note: adding this to `projects` also surfaces it in the home skill-drawer under 'Mobile & Web Dev'.
     skills: ['Mobile & Web Dev'],
-    links: {},
+    links: { github: 'https://github.com/cecehoush' },
     badge: '2nd place',
     lav: false, figma: false,
   },
   {
+    id: 'accessible-llm', num: '05', title: 'Accessible LLM Interfaces', type: 'Research · NSF',
+    dateRange: 'Sep 2025 – May 2026',
+    desc: 'Evaluating LLM interfaces for underserved communities.',
+    shortDesc: 'NSF-funded research evaluating and designing LLM interfaces that work for underserved and non-technical users.',
+    longDesc: 'As a Graduate Research Assistant on the NSF-funded Colorado Sustainability Hub, I research accessible and inclusive LLM interfaces — improving usability across technical and non-technical users — and co-author a survey paper on LLM evaluation benchmarks. The work spans UI/UX design in Figma, chatbot interaction models, and machine-learning models that surface sustainability data patterns.',
+    skills: ['Accessibility', 'HCI', 'LLM Evaluation', 'AI', 'Research'],
+    links: { website: 'https://sustainabilityhub.co' },
+    badge: 'NSF',
+    lav: false, figma: false,
+  },
+  {
     id: 'align', num: '06', title: 'Align', type: 'HCI · Figma · Project Lead',
+    dateRange: 'Spring 2026',
     desc: 'Community-care app concept designed to support real-world belonging, not more screen time.',
     shortDesc: 'Team-led HCI/Figma project focused on helping people identify their values and needs before joining communities, then supporting sustained real-world engagement.',
     longDesc: 'Align was a Fall 2025 HCI project at the University of Denver centered on social connection and community care. After a class-wide critique and gallery walk, my concept was selected as one of six projects advanced into team development, and I led a team of four through weekly deliverables, user testing, and final presentation. I drove most of the Figma design and prototype wiring, taught teammates Figma workflows, wrote the recurring deliverables, and pushed accessibility throughout the product, including WCAG AA contrast checks, clearer interaction patterns, and more inclusive UX decisions. The final concept helps users reflect on their values, needs, and sense of belonging before searching for communities, then uses careful gamification, event tools, and community matching to encourage offline connection rather than keeping people on their phones.',
@@ -85,6 +86,23 @@ export const projects = [
       'figma/align/home-screen.png',
     ],
     lav: false, figma: true,
+  },
+  {
+    id: 'deep-learning-quiz',
+    num: '07',
+    title: 'Deep Learning Educational Tool',
+    type: 'INDEPENDENT STUDY',
+    dateRange: 'Aug 2024 – Dec 2024',
+    // `desc`/`lav` added (not in the original spec) so the home MarqueeBar skill
+    // drawer (AI/Research) renders a description and tint like the other projects.
+    desc: 'RAG-powered educational chatbot for reviewing Discrete Structures quiz material.',
+    shortDesc: 'RAG-powered educational chatbot that helps students review quiz material from Discrete Structures, generating tailored follow-up questions based on individual quiz responses.',
+    longDesc: 'Built in a team of three as an independent study under faculty guidance. The chatbot uses Retrieval-Augmented Generation to pull context from textbook PDFs, then generates personalized follow-up questions to guide students toward understanding rather than just giving answers.\n\nIntegrated Ollama running Llama 3 as the local LLM, OpenAI embeddings with SKLearnVectorStore for semantic retrieval, and PyPDF2 for textbook ingestion. Built a Streamlit frontend for student interaction. Designed the system to ask guiding questions rather than provide direct answers, supporting deeper learning.\n\nPlanned next steps include expanding to additional courses, conducting user testing for a potential research publication, and integrating with the Canvas API for automatic quiz and class retrieval.',
+    skills: ['Python', 'LangChain', 'RAG', 'Llama 3', 'OpenAI', 'Streamlit', 'Machine Learning', 'AI', 'Research'],
+    links: {},
+    images: [],
+    badge: null,
+    lav: false, figma: false,
   },
 ];
 

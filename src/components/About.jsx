@@ -34,12 +34,10 @@ export default function About() {
       ref={ref}
     >
       <div>
-        <h2 className={styles.secLabel}>About</h2>
+        <h2 className={styles.secLabel}>At a glance</h2>
         <div className={styles.aboutH}>Building tech for people who actually need it.</div>
         <p className={styles.aboutP}>
-          First-year CS PhD student at the University of Denver specializing in HCI. Graduate Research Assistant on the NSF Colorado Sustainability Hub — building accessible LLM interfaces and researching health pattern recognition for underserved communities.
-          <br /><br />
-          Two-time hackathon winner. Flutter developer. Proud cat servant.
+          Full-stack developer and researcher based in Denver. I build across the stack — mobile, web, and AI — with a focus on making technology actually work for the people using it.
         </p>
       </div>
       <div className={styles.stats}>
@@ -67,12 +65,25 @@ export default function About() {
         <StatRow
           icon={
             <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
-              <circle cx="7.5" cy="7.5" r="5" stroke="#6AAEE0" strokeWidth="1.2" />
-              <circle cx="7.5" cy="7.5" r="2" fill="#6AAEE0" />
+              <ellipse cx="7.5" cy="3.5" rx="5" ry="2" stroke="#6AAEE0" strokeWidth="1.2" />
+              <path d="M2.5 3.5v8c0 1.1 2.24 2 5 2s5-0.9 5-2v-8" stroke="#6AAEE0" strokeWidth="1.2" />
+              <path d="M2.5 7.5c0 1.1 2.24 2 5 2s5-0.9 5-2" stroke="#6AAEE0" strokeWidth="1.2" />
             </svg>
           }
-          val="HCI · AI"
-          lbl="Health equity · Accessibility"
+          val="SQL winner"
+          lbl="First woman at MSU Denver"
+        />
+        <StatRow
+          style={{ borderColor: 'rgba(176,144,224,0.13)' }}
+          iconStyle={{ background: 'rgba(176,144,224,0.07)', borderColor: 'rgba(176,144,224,0.18)' }}
+          icon={
+            <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+              <rect x="4" y="1.5" width="7" height="12" rx="1.5" stroke="#B090E0" strokeWidth="1.2" />
+              <path d="M6.3 11.5h2.4" stroke="#B090E0" strokeWidth="1.1" strokeLinecap="round" />
+            </svg>
+          }
+          val="App Store"
+          lbl="iOS & Android"
         />
       </div>
     </section>

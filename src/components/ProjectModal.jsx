@@ -164,6 +164,7 @@ export default function ProjectModal({ project, onClose }) {
                 <div>
                   <div className={styles.infoTitle}>{current.title}</div>
                   <div className={`${styles.infoType} ${isFigma ? '' : styles.plain}`}>{current.type}</div>
+                  {current.dateRange && <div className={styles.infoDate}>{current.dateRange}</div>}
                 </div>
                 <div className={styles.infoDesc}>{renderDescription(description)}</div>
                 {pills.length > 0 && (

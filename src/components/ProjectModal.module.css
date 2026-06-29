@@ -155,6 +155,11 @@
   color: var(--orange);
   margin-top: 0.2rem;
 }
+.infoDate {
+  font-size: 0.7rem;
+  color: rgba(232, 240, 252, 0.5);
+  margin-top: 0.3rem;
+}
 .infoDesc {
   font-size: 0.78rem;
   line-height: 1.68;
