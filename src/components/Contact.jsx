@@ -253,6 +253,12 @@ export default function Contact() {
               <p className={styles.tagline}>
                 Open to research collabs, internship opportunities, and good conversations.
               </p>
+              <div className={styles.simpleLinks}>
+                <a href={LINKS.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href={LINKS.github} target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a href={LINKS.email}>Email</a>
+                <a href={LINKS.resume} target="_blank" rel="noopener noreferrer">Resume</a>
+              </div>
             </div>
 
             <div className={styles.simpleRight}>

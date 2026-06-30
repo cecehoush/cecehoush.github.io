@@ -43,7 +43,10 @@
   position: relative;
   z-index: 1;
   width: 100%;
-  max-width: 760px;
+  /* Match the frosted simple-mode panel's footprint exactly (same max-width +
+     min-height) so toggling modes doesn't resize the container. */
+  max-width: 1000px;
+  min-height: 480px;
   background: #0a0f1e;
   border: 0.5px solid rgba(106, 174, 224, 0.18);
   border-radius: 12px;
@@ -80,12 +83,12 @@
 .overwhelmed {
   margin-left: auto;
   font-family: 'DM Sans', sans-serif;
-  font-size: 8.5px;
+  font-size: 11px;
   color: #C0A0F0;
   background: rgba(176, 144, 224, 0.12);
   border: 1.5px solid rgba(176, 144, 224, 0.4);
   border-radius: 999px;
-  padding: 0.28rem 0.62rem;
+  padding: 6px 14px;
   cursor: pointer;
   white-space: nowrap;
   transition: background 0.2s, border-color 0.2s, transform 0.2s, box-shadow 0.2s;
@@ -149,11 +152,11 @@
   font-size: 0.76rem;
 }
 .termLinks a {
-  color: rgba(232, 240, 252, 0.55);
+  color: rgba(232, 240, 252, 0.733);
   text-decoration: none;
   transition: color 0.2s;
 }
-.termLinks a:hover { color: #6AAEE0; }
+.termLinks a:hover { color: #6AAEE0; font-weight: 600; }
 .termLinks span { color: rgba(232, 240, 252, 0.25); }
 
 /* ── SEND BUTTON + STATUS (shared) ── */
@@ -187,6 +190,7 @@
   display: inline-block;
   transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
+.send:hover:not(:disabled) { font-weight: 600; }
 .send:hover:not(:disabled) .sendArrow { transform: translateX(5px); }
 .cursor {
   display: inline-block;
@@ -281,6 +285,7 @@
    fade lives here (not on an ancestor) so its transient transform/opacity doesn't
    break this element's backdrop-filter. */
 .frost {
+  position: relative; /* anchor for the top-right back button */
   background: rgba(13, 26, 46, 0.35);
   -webkit-backdrop-filter: blur(24px);
   backdrop-filter: blur(8px);
@@ -288,6 +293,8 @@
   border-radius: 16px;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
   padding: 2.5rem;
+  /* Shared min-height with the terminal so both modes occupy the same footprint. */
+  min-height: 480px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 3rem;
@@ -335,8 +342,13 @@
   flex-direction: column;
   gap: 0.85rem;
 }
+/* Pinned to the top-right of the frosted panel — mirrors the terminal's
+   "overwhelmed?" button so the cursor stays put when switching modes. */
 .back {
-  align-self: flex-start;
+  position: absolute;
+  top: 1.5rem;
+  right: 1.75rem;
+  z-index: 2;
   font-family: 'Courier New', monospace;
   font-size: 14px;
   letter-spacing: 0.04em;
@@ -345,12 +357,47 @@
   border: none;
   padding: 0;
   cursor: pointer;
-  margin-bottom: 0.9rem;
   transition: color 0.2s;
 }
 /* Bold-only on hover — stays var(--text) so it's legible on the light frosted
    panel too (pure white would vanish there). */
 .back:hover { font-weight: 600; }
+/* Simple-mode social links — small pills under the tagline, matching the page
+   (DM Sans + blue accent) rather than the terminal's monospace row. */
+.simpleLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+.simpleLinks a {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.03em;
+  color: rgba(232, 240, 252, 0.7);
+  text-decoration: none;
+  padding: 0.35rem 0.8rem;
+  border: 0.5px solid rgba(232, 240, 252, 0.25);
+  border-radius: 999px;
+  transition: color 0.2s, border-color 0.2s;
+}
+/* Brighten + bold on hover (same pattern as the back button), no blue — the pill
+   border brightens with the text. */
+.simpleLinks a:hover {
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.6);
+  font-weight: 600;
+}
+/* Light mode: neutral dark grey, darken + bold on hover. */
+:global([data-theme='light']) .simpleLinks a {
+  color: var(--text); /* same as the "back to terminal" button */
+  border-color: rgba(13, 26, 46, 0.55);
+}
+:global([data-theme='light']) .simpleLinks a:hover {
+  color: rgba(13, 26, 46, 0.95);
+  border-color: rgba(13, 26, 46, 0.95);
+  font-weight: 600;
+}
 .formLbl {
   font-size: 0.62rem;
   letter-spacing: 0.18em;
