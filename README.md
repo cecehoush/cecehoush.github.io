@@ -72,7 +72,7 @@ Builds and pushes to the `gh-pages` branch. Cloudflare handles the custom domain
 
 ## Contact form
 
-Powered by EmailJS (free tier, 200 requests/month). Credentials are in `Contact.jsx` — the public key is intentionally client-side as EmailJS is a browser-first service. Domain restriction is configured in the EmailJS dashboard to limit requests to cecehoush.com.
+Powered by EmailJS (free tier, 200 requests/month). Domain restriction is configured in the EmailJS dashboard so only cecehoush.com can send requests. The 60-second client-side cooldown prevents rapid resubmission.
 
 ---
 
