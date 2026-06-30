@@ -73,3 +73,20 @@ Builds and pushes to the `gh-pages` branch. Cloudflare handles the custom domain
 ## Contact form
 
 Powered by EmailJS (free tier, 200 requests/month). Credentials are in `Contact.jsx` — the public key is intentionally client-side as EmailJS is a browser-first service. Domain restriction is configured in the EmailJS dashboard to limit requests to cecehoush.com.
+
+---
+
+## Roadmap
+
+### Post-deployment
+- [ ] About page — full buildout with personal content, photo, interests
+- [ ] 'Currently' block — add to About or home page
+- [ ] Home page project cards — make clickable (open popup or navigate to portfolio with project highlighted); accessibility review required before implementing
+- [ ] Cat runner mini game — replace about section paragraph with cat-and-mouse runner game; needs CC0/CC-BY pixel art sprites for cat and mouse from itch.io or OpenGameArt
+- [ ] Profile photo — finalize placement (Option A: portrait card anchored bottom-left, or Option B: faded dissolve — both implemented, toggle via PHOTO_STYLE constant in Hero.jsx)
+- [ ] Light mode popups — popup modals currently stay dark in light mode intentionally; revisit post-launch
+- [ ] Website button redesign — explore new visual treatment for project link buttons
+- [ ] Sticky footer — or add socials to contact page (socials already added to contact simple mode as interim solution)
+- [ ] Certification descriptions — add detail/context to cert entries in Portfolio Certifications tab
+- [ ] Verify easy content updates — confirm adding new project/experience to portfolio.js automatically surfaces it in the right tab with no other file changes needed
+- [ ] Image compression check — run before adding large new images; target under 300KB per photo, under 150KB per PNG

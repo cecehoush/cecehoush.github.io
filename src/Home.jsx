@@ -8,14 +8,14 @@ import Footer from './components/Footer.jsx';
 import ProjectModal from './components/ProjectModal.jsx';
 
 export default function Home() {
-  // The skill drawer (MarqueeBar) opens the modal with a Figma data entry.
+  // Any skill-drawer project card opens its full-detail modal.
   const [modalProject, setModalProject] = useState(null);
 
   return (
     <>
       <Nav />
       <Hero />
-      <MarqueeBar onOpenFigma={setModalProject} />
+      <MarqueeBar onOpenProject={setModalProject} />
       <Projects />
       <About />
       <Footer />

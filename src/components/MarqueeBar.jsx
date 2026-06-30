@@ -24,7 +24,7 @@ function matchProjects(skillLabel) {
   );
 }
 
-export default function MarqueeBar({ onOpenFigma }) {
+export default function MarqueeBar({ onOpenProject }) {
   const [open, setOpen] = useState(false);
   const [activeSkill, setActiveSkill] = useState(null);
   // Persists while the drawer collapses, so content doesn't vanish mid-transition.
@@ -121,16 +121,12 @@ export default function MarqueeBar({ onOpenFigma }) {
                   <div className={styles.piArrow} aria-hidden="true">↗</div>
                 </>
               );
-              // Figma projects open the modal (interactive → button); others are
-              // static info cards and stay as non-interactive divs.
-              return isFig ? (
-                <button type="button" key={p.id} className={className} onClick={() => onOpenFigma(p)}>
+              // Every card opens that project's full-detail modal (same content as
+              // the portfolio "Open full detail" button), regardless of skill.
+              return (
+                <button type="button" key={p.id} className={className} onClick={() => onOpenProject(p)}>
                   {inner}
                 </button>
-              ) : (
-                <div key={p.id} className={className}>
-                  {inner}
-                </div>
               );
             })}
           </div>
