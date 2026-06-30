@@ -8,10 +8,10 @@ Personal portfolio site for Cece Housh, built from scratch as a fully custom Rea
 
 ## Tech stack
 
-- React 18 with Vite
-- React Router for client-side routing
-- CSS Modules for component-scoped styling
-- GitHub Pages for hosting with Cloudflare custom domain
+- React 18 with Vite — fast build times and hot module replacement for a smooth development experience
+- React Router for client-side routing across three pages
+- CSS Modules for component-scoped styling with zero class name collisions
+- GitHub Pages for hosting with Cloudflare custom domain for performance and HTTPS
 
 ---
 
@@ -54,12 +54,6 @@ public/
 
 ---
 
-## Image management
-
-Project images live in `public/figma/<project_slug>/`. Subfolders are treated as named image groups (e.g. `mobile/` and `desktop/` render as separate labeled rows in the popup modal). The manifest at `src/data/generated/figmaManifest.js` is auto-generated — run `npm run sync:figma-media` to regenerate manually if needed.
-
----
-
 ## Deployment
 
 ```bash
@@ -72,7 +66,7 @@ Builds and pushes to the `gh-pages` branch. Cloudflare handles the custom domain
 
 ## Contact form
 
-Powered by EmailJS (free tier, 200 requests/month). Domain restriction is configured in the EmailJS dashboard so only cecehoush.com can send requests. The 60-second client-side cooldown prevents rapid resubmission.
+The contact form features a terminal-mode interface and a secondary frosted-glass simple mode. Powered by EmailJS, with domain-level security restrictions configured to ensure safe and reliable communication. A 60-second client-side cooldown prevents rapid resubmission.
 
 ---
 
