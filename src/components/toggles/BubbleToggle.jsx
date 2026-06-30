@@ -70,7 +70,7 @@ export default function BubbleToggle({ isDark, toggle }) {
       aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
     >
       <canvas ref={canvasRef} className={styles.canvas} width={SIZE} height={SIZE} />
-      <span className={styles.badge} aria-hidden="true">{isDark ? '🌙' : '☀️'}</span>
+      <span className={styles.badge} aria-hidden="true">{isDark ? '☀️' : '🌙'}</span>
     </button>
   );
 }

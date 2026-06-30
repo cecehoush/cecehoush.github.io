@@ -69,6 +69,11 @@
 .heroDot {
   color: var(--blue);
 }
+/* Light mode: #6AAEE0 is too pale on the light background — use the site's
+   accessible dark-blue accent. Dark mode keeps var(--blue) (#6AAEE0). */
+[data-theme="light"] .heroDot {
+  color: #1A5090;
+}
 .sub {
   font-size: 0.95rem;
   font-weight: 300;
