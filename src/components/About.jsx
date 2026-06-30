@@ -37,7 +37,7 @@ export default function About() {
         <h2 className={styles.secLabel}>At a glance</h2>
         <div className={styles.aboutH}>Building tech for people who actually need it.</div>
         <p className={styles.aboutP}>
-          Full-stack developer and researcher based in Denver. I build across the stack — mobile, web, and AI — with a focus on making technology actually work for the people using it.
+          Full-stack developer and researcher based in Denver. I build across the stack, including mobile, web, and AI, with a focus on making technology actually work for the people using it.
         </p>
       </div>
       <div className={styles.stats}>
@@ -82,8 +82,8 @@ export default function About() {
               <path d="M6.3 11.5h2.4" stroke="#B090E0" strokeWidth="1.1" strokeLinecap="round" />
             </svg>
           }
-          val="App Store"
-          lbl="iOS & Android"
+          val="App Deployment"
+          lbl="To iOS &amp; Android app stores"
         />
       </div>
     </section>
