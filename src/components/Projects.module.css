@@ -119,6 +119,10 @@
 [data-theme="light"] .cardNum { color: #4A2E8A; }
 [data-theme="light"] .cardType { color: #0F3D7A; }
 [data-theme="light"] .cardDesc { color: rgba(13, 26, 46, 0.72); }
+/* Decorative arrow: the pale blue is nearly invisible on the light card, so use a
+   soft dark navy at rest and darken on hover. Dark mode is unchanged. */
+[data-theme="light"] .cardArrow { color: rgba(13, 26, 46, 0.35); }
+[data-theme="light"] .card:hover .cardArrow { color: rgba(13, 26, 46, 0.65); }
 
 /* ── FADE IN ── */
 .fadeIn {
