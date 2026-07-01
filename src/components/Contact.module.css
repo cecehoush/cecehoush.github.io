@@ -157,7 +157,7 @@
   transition: color 0.2s;
 }
 .termLinks a:hover { color: #6AAEE0; font-weight: 600; }
-.termLinks span { color: rgba(232, 240, 252, 0.25); }
+.termLinks span { color: rgba(232, 240, 252, 0.55); }
 
 /* ── SEND BUTTON + STATUS (shared) ── */
 .sendRow {

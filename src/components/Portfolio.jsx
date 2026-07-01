@@ -124,8 +124,8 @@ export default function Portfolio() {
       <Nav />
       <main className={styles.page}>
         <header className={styles.header}>
-          <div className={styles.eyebrow}>Portfolio</div>
-          <p className={styles.intro}>Projects, experience, and the work behind them.</p>
+          <h1 className={styles.eyebrow}>Portfolio</h1>
+          <h2 className={styles.intro}>Projects, experience, and the work behind them.</h2>
         </header>
 
         <div className={styles.tabBar}>

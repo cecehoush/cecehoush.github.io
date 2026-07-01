@@ -85,14 +85,14 @@ export default function Nav() {
 
   return (
     <nav className={styles.nav}>
-      <a className={styles.logo} href="#hero" onClick={(e) => goToHashSection(e, 'hero')}>
+      <a className={styles.logo} href={location.pathname === '/' ? '#hero' : '/#hero'} onClick={(e) => goToHashSection(e, 'hero')}>
         <div className={styles.dot}></div>
         Cece Housh
       </a>
       <div className={styles.right}>
         <div className={styles.links}>
           <Link to="/portfolio" data-text="Portfolio"><span className={styles.linkLabel}>Portfolio</span></Link>
-          <a href="#about" data-text="About" onClick={(e) => goToHashSection(e, 'about')}><span className={styles.linkLabel}>About</span></a>
+          <a href={location.pathname === '/' ? '#about' : '/#about'} data-text="About" onClick={(e) => goToHashSection(e, 'about')}><span className={styles.linkLabel}>About</span></a>
           <Link to="/contact" data-text="Contact"><span className={styles.linkLabel}>Contact</span></Link>
         </div>
         <div className={styles.menu} ref={menuRef}>
@@ -111,7 +111,7 @@ export default function Nav() {
           </button>
           <div className={`${styles.menuPanel} ${menuOpen ? styles.menuPanelOpen : ''}`} id="nav-menu">
             <Link className={styles.menuLink} to="/portfolio" onClick={closeMenu}>Portfolio</Link>
-            <a className={styles.menuLink} href="#about" onClick={(e) => goToHashSection(e, 'about')}>About</a>
+            <a className={styles.menuLink} href={location.pathname === '/' ? '#about' : '/#about'} onClick={(e) => goToHashSection(e, 'about')}>About</a>
             <Link className={styles.menuLink} to="/contact" onClick={closeMenu}>Contact</Link>
             <div className={styles.menuDivider}></div>
             <a className={`${styles.btn} ${styles.menuBtn}`} href="/CeceHoush_Resume.pdf" target="_blank" rel="noopener noreferrer" onClick={closeMenu}>

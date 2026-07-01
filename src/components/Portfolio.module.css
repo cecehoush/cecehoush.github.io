@@ -171,9 +171,11 @@
 }
 .projRowDate {
   font-size: 0.64rem;
-  color: var(--muted);
-  opacity: 0.75;
+  color: rgba(232, 240, 252, 0.72);
   margin-top: 0.1rem;
+}
+[data-theme='light'] .projRowDate {
+  color: rgba(13, 26, 46, 0.85);
 }
 .badge {
   flex-shrink: 0;
