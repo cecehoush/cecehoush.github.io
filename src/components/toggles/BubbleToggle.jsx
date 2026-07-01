@@ -17,10 +17,13 @@ export default function BubbleToggle({ isDark, toggle }) {
     canvas.height = SIZE * dpr;
     ctx.scale(dpr, dpr);
 
-    const bg = isDark ? '#070A12' : '#D8EAF8';
+    // The toggle previews the TARGET theme (what a click switches to), so the
+    // circle + bubbles are inverted vs the current theme — matching the emoji
+    // (light circle + sun shown in dark mode, dark circle + moon in light mode).
+    const bg = isDark ? '#D8EAF8' : '#070A12';
     const cols = isDark
-      ? ['rgba(106,174,224,0.6)', 'rgba(176,144,224,0.6)']
-      : ['rgba(20,80,160,0.45)', 'rgba(100,60,180,0.45)'];
+      ? ['rgba(20,80,160,0.45)', 'rgba(100,60,180,0.45)']
+      : ['rgba(106,174,224,0.6)', 'rgba(176,144,224,0.6)'];
 
     const particles = Array.from({ length: 12 }, () => {
       const big = Math.random() > 0.35;
@@ -47,7 +50,7 @@ export default function BubbleToggle({ isDark, toggle }) {
           ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
           ctx.strokeStyle = p.c; ctx.globalAlpha = p.a; ctx.lineWidth = p.lw; ctx.stroke();
           ctx.beginPath(); ctx.arc(p.x - p.r * 0.3, p.y - p.r * 0.3, p.r * 0.18, 0, Math.PI * 2);
-          ctx.fillStyle = isDark ? 'rgba(255,255,255,0.65)' : 'rgba(255,255,255,0.55)';
+          ctx.fillStyle = isDark ? 'rgba(255,255,255,0.55)' : 'rgba(255,255,255,0.65)';
           ctx.globalAlpha = p.a * 0.5; ctx.fill();
         } else {
           ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
